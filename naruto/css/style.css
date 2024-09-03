@@ -1,0 +1,23 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-image: url();
+    object-fit: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    object-fit: cover;
+
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+
+footer {
+    margin-top: 20px;
+}
