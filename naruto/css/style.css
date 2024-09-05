@@ -1,23 +1,329 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Globales */
 body {
-    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+    max-width: 1200px;
+    font-family: 'Lato', sans-serif;
+    color: #333;
     background-color: #f4f4f4;
 }
 
+img {
+    max-width: 100%;
+}
+
+/* Iconos */
+.icon-cart {
+    width: 40px;
+    height: 40px;
+    stroke: #000;
+    cursor: pointer;
+}
+
+/* Estilos del Header */
 header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 40px 0;
     background-image: url();
-    object-fit: cover;
     background-position: center;
     color: white;
     text-shadow: 2px 2px 4px #000000;
-    object-fit: cover;
-
 }
 
-.navbar-brand {
+.container-icon {
+    position: relative;
+}
+
+.count-products {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+/* Fondo Oscuro del Modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+/* Modal del Carrito */
+.modal-cart {
+    position: fixed;
+            
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+            
+            
+            
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Botón de Cerrar Modal */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: red;
+}
+
+/* Mostrar Modal y Overlay */
+.overlay.show,
+.modal-cart.show {
+    display: block;
+    opacity: 1;
+}
+.modal-cart.visible {
+    transform: translateX(0);
+}
+.overlay.visible,
+.modal-cart.visible {
+    display: block;
+}
+.close-modal {
+    cursor: pointer;
+}
+/* Contenedor de Productos en el Carrito */
+.cart-row-product {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Tarjetas de Productos en el Carrito */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ajustes para el contenedor de la imagen */
+.cart-item-figure {
+    width: 80px; /* O el ancho que prefieras */
+    margin: 0;
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.cart-item-figure img {
+    max-width: 100%; /* Asegúrate de que la imagen no exceda el contenedor */
+    height: auto; /* Mantén la proporción de la imagen */
+}
+
+/* Ajustes para la información del producto en el carrito */
+.cart-info-product {
+    flex-grow: 1;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacia el contenido de manera uniforme */
+}
+
+.cart-quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-quantity-container button {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-btn-remove {
+    background-color: #ff4c4c;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-btn-remove:hover {
+    background-color: #e04040;
+}
+
+.cart-total-price {
     font-weight: bold;
+    margin-left: auto;
+    font-size: 16px;
+    color: #000;
 }
 
-
-footer {
+.cart-actions {
+    text-align: center;
     margin-top: 20px;
+}
+
+.btn-buy {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Contenedor de Ítems de la Tienda */
+.container-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.item:hover {
+    transform: scale(1.02);
+}
+
+.item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.item:hover img {
+    transform: scale(1.2);
+}
+
+.info-product {
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.info-product button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+
+/* Mensajes y Elementos Ocultos */
+.hidden-cart {
+    display: none;
+}
+
+/* Mensaje de carrito vacío */
+.cart-empty-message {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    padding: 20px 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+/* Estilo para el formulario */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el formulario visible */
+.form-visible {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Estilo para el mensaje de confirmación */
+#message {
+    display: none;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#message.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }

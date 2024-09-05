@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Store</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Store</h1>
+            <div class="container-icon">
+                <div class="container-cart-icon" @click="toggleCart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                    </svg>
+                    <div class="count-products">
+                        <span>{{ cartCount }}</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="overlay" :class="{ visible: isCartVisible }" @click="toggleCart"></div>
+        <div class="modal-cart" :class="{ visible: isCartVisible }">
+            <div class="modal-content">
+                <button class="close-modal" @click="toggleCart">&times;</button>
+                <div class="row-product">
+                    <div v-if="cart.length === 0" class="cart-empty-message">El carrito está vacío</div>
+                    <div v-for="product in cart" :key="product.id" class="cart-item">
+                        <figure class="cart-item-figure">
+                            <img :src="product.imgSrc" :alt="product.title" class="cart-item-image"/>
+                        </figure>
+                        <div class="cart-info-product">
+                            <h2 class="cart-item-title">{{ product.title }}</h2>
+                            <div class="cart-quantity-container">
+                                <button @click="decreaseQuantity(product)">-</button>
+                                <span class="cart-quantity">{{ product.quantity }}</span>
+                                <button @click="increaseQuantity(product)">+</button>
+                            </div>
+                            <span class="cart-price">$ {{ product.price.toFixed(2) }}</span>
+                            <button @click="removeProduct(product)" class="cart-btn-remove">Eliminar</button>
+                        </div>
+                        <span class="cart-total-price">$ {{ (product.price * product.quantity).toFixed(2) }}</span>
+                    </div>
+                </div>
+                <div class="cart-total" v-if="cart.length > 0">
+                    <span class="total-pagar"><strong>Total:</strong> $ {{ total.toFixed(2) }}</span>
+                </div>
+                <div class="cart-actions" v-if="cart.length > 0">
+                    <a href="formulario.html" class="btn-buy">Buy</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-items">
+            <div v-for="item in items" :key="item.title" class="item">
+                <figure>
+                    <img :src="item.imgSrc" :alt="item.title"/>
+                </figure>
+                <div class="info-product">
+                    <h2>{{ item.title }}</h2>
+                    <p class="price">$ {{ item.price }}</p>
+                    <button @click="addToCart(item)" class="btn-add-card">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/store.js"></script>
+</body>
+
+</html>
