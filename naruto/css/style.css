@@ -120,17 +120,23 @@ nav a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 20px; /* Añade espacio alrededor */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
 }
+
 
 
 .character-item {
     overflow: hidden;
-    width: calc(33% - 20px);
+    width: calc(33% - 20px); /* Ajusta el tamaño de las tarjetas */
     text-align: center;
     padding: 10px;
+    margin: 0 auto; /* Centra las tarjetas */
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 
 
 .character-item:hover {
@@ -158,17 +164,7 @@ nav a:hover {
 }
 
 
-@media (max-width: 768px) {
-    .character-item {
-        width: calc(50% - 20px);
-    }
-}
 
-@media (max-width: 480px) {
-    .character-item {
-        width: 100%;
-    }
-}
 
 
 .section-title {
@@ -279,10 +275,10 @@ nav a:hover {
     box-sizing: border-box;
 }
 
-/* Estilos Globales */
+
 body {
-    margin: 0 auto;
-    max-width: 1200px;
+    margin: 100px auto;
+    
     font-family: 'Lato', sans-serif;
     color: #333;
     background-color: #f4f4f4;
@@ -292,11 +288,12 @@ img {
     max-width: 100%;
 }
 
-/* Iconos */
+
+/* Icono del Carrito */
 .icon-cart-custom {
-    width: 40px;
+    width: 40px; /* Ajusta el tamaño del icono */
     height: 40px;
-    stroke: #000;
+    stroke: #fff; /* Cambia el color del icono a blanco para contraste */
     cursor: pointer;
 }
 
@@ -311,10 +308,21 @@ img {
     text-shadow: 2px 2px 4px #000000;
 }
 
+/* Contenedor del Icono del Carrito */
 .container-icon-custom {
-    position: relative;
+    position: sticky; /* Hace que el contenedor sea pegajoso */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    left: 20px; /* Ajusta la distancia desde la parte izquierda si es necesario */
+    width: 60px; /* Tamaño del contenedor */
+    height: 60px; /* Tamaño del contenedor */
+    background-color: #000; /* Fondo negro */
+    border-radius: 50%; /* Hace que el fondo sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para mejor visibilidad */
 }
-
 .count-products-custom {
     position: absolute;
     top: 0;
@@ -502,6 +510,7 @@ img {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background-color: #fff; /* Fondo blanco sólido para las tarjetas */
     transition: transform 0.5s, box-shadow 0.5s;
+    margin: 0; /* Elimina márgenes dentro de cada tarjeta */
 }
 
 .item-custom:hover {
@@ -518,7 +527,6 @@ img {
 .item-custom:hover img {
     transform: scale(1.2);
 }
-
 .info-product-custom {
     padding: 15px 30px;
     line-height: 2;
@@ -553,13 +561,14 @@ img {
     padding: 20px 0;
 }
 
-.container-custom {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    margin: 0;
+.container-items-custom {
+    display: grid; /* Usa grid para manejar el layout */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Añade espacio alrededor del contenedor */
+    margin: 0 20px; /* Añade margen de 20px en los lados izquierdo y derecho */
+    
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
 }
 
 /* Estilo para el formulario */
