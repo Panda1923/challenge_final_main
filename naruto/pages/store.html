@@ -7,70 +7,102 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
-</head>
-<body>
+<body id="bodyhtml" class="d-flex flex-column min-vh-100">
+    <!-- Video de fondo -->
+    <video src="../assets/naruto-8.mp4" autoplay muted loop type="video/mp4"></video>
+
     <div id="app">
-        <header>
-            <h1>Store</h1>
-            <div class="container-icon">
-                <div class="container-cart-icon" @click="toggleCart">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+        <header class="header-custom ">
+            <div class="nav-container">
+                <div class="menu-icon" id="menuIcon">
+                  <img class="logo" src="../assets/naruto-removebg-preview.png" alt="Menu Icon">
+                </div>
+                <nav class="navbar navbar-expand-md navbar-light" id="navbar">
+                  <a class="navbar-brand d-md-none" href="#home">Home</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <nav id="navbar-nav" class="justify-content-center">
+                      <a href="#home" class="nav-link">
+                        <img class="logo" src="../assets/HOME (1).png" alt="Home">
+                      </a>
+                      <a href="#about" class="nav-link">
+                        <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
+                      </a>
+                      <a href="../pages/store.html" class="nav-link">
+                        <img class="logo" src="../assets/STORE.png" alt="Store">
+                      </a>
+                    </nav>
+                  </div>
+                </nav>
+              </div>
+            
+            <div class="container-icon-custom">
+                <div class="container-cart-icon-custom" @click="toggleCart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart-custom">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
                     </svg>
-                    <div class="count-products">
+                    <div class="count-products-custom">
                         <span>{{ cartCount }}</span>
                     </div>
                 </div>
             </div>
         </header>
 
-        <div class="overlay" :class="{ visible: isCartVisible }" @click="toggleCart"></div>
-        <div class="modal-cart" :class="{ visible: isCartVisible }">
-            <div class="modal-content">
-                <button class="close-modal" @click="toggleCart">&times;</button>
-                <div class="row-product">
-                    <div v-if="cart.length === 0" class="cart-empty-message">El carrito está vacío</div>
-                    <div v-for="product in cart" :key="product.id" class="cart-item">
-                        <figure class="cart-item-figure">
-                            <img :src="product.imgSrc" :alt="product.title" class="cart-item-image"/>
+        <div class="overlay-custom" v-if="isCartVisible" @click="toggleCart"></div>
+        <div class="modal-cart-custom" v-if="isCartVisible">
+            <div class="modal-content-custom">
+                <button class="close-modal-custom" @click="toggleCart">&times;</button>
+                <div class="cart-row-product-custom">
+                    <div v-if="cart.length === 0" class="cart-empty-message-custom">El carrito está vacío</div>
+                    <div v-for="product in cart" :key="product.id" class="cart-item-custom">
+                        <figure class="cart-item-figure-custom">
+                            <img :src="product.imgSrc" :alt="product.title" class="cart-item-image-custom"/>
                         </figure>
-                        <div class="cart-info-product">
-                            <h2 class="cart-item-title">{{ product.title }}</h2>
-                            <div class="cart-quantity-container">
+                        <div class="cart-info-product-custom">
+                            <h2 class="cart-item-title-custom">{{ product.title }}</h2>
+                            <div class="cart-quantity-container-custom">
                                 <button @click="decreaseQuantity(product)">-</button>
-                                <span class="cart-quantity">{{ product.quantity }}</span>
+                                <span class="cart-quantity-custom">{{ product.quantity }}</span>
                                 <button @click="increaseQuantity(product)">+</button>
                             </div>
-                            <span class="cart-price">$ {{ product.price.toFixed(2) }}</span>
-                            <button @click="removeProduct(product)" class="cart-btn-remove">Eliminar</button>
+                            <span class="cart-price-custom">$ {{ product.price.toFixed(2) }}</span>
+                            <button @click="removeProduct(product)" class="cart-btn-remove-custom">Eliminar</button>
                         </div>
-                        <span class="cart-total-price">$ {{ (product.price * product.quantity).toFixed(2) }}</span>
+                        <span class="cart-total-price-custom">$ {{ (product.price * product.quantity).toFixed(2) }}</span>
                     </div>
                 </div>
-                <div class="cart-total" v-if="cart.length > 0">
-                    <span class="total-pagar"><strong>Total:</strong> $ {{ total.toFixed(2) }}</span>
-                </div>
-                <div class="cart-actions" v-if="cart.length > 0">
-                    <a href="formulario.html" class="btn-buy">Buy</a>
+                <div class="cart-actions-custom" v-if="cart.length > 0">
+                    <span class="cart-total-price-custom"><strong>Total:</strong> $ {{ total.toFixed(2) }}</span>
+                    <a href="formulario.html" class="btn-buy-custom">Buy</a>
                 </div>
             </div>
         </div>
 
-        <div class="container-items">
-            <div v-for="item in items" :key="item.title" class="item">
+        <div class="container-items-custom">
+            <div v-for="item in items" :key="item.title" class="item-custom">
                 <figure>
                     <img :src="item.imgSrc" :alt="item.title"/>
                 </figure>
-                <div class="info-product">
+                <div class="info-product-custom">
                     <h2>{{ item.title }}</h2>
-                    <p class="price">$ {{ item.price }}</p>
-                    <button @click="addToCart(item)" class="btn-add-card">Add to Cart</button>
+                    <p class="price-custom">$ {{ item.price }}</p>
+                    <button @click="addToCart(item)" class="btn-add-card-custom">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <footer>
+        <div class="contendorFooter">
+            <p>&copy; 2024 Naruto Fan Page. Todos los derechos reservados.</p>
+            <a href="#home" class="text-white">Inicio</a> | 
+            <a href="#about" class="text-white">Sobre</a> | 
+            <a href="#contact" class="text-white">Contacto</a>
+        </div>
+    </footer>
 
     <script src="../scripts/store.js"></script>
 </body>
-
 </html>

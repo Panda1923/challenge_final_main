@@ -1,4 +1,278 @@
-/* Reset de Estilos */
+
+#bodyhtml {
+    font-family: fantasy;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0; 
+}
+
+
+
+.icon-cart {
+    width: 40px;
+    height: 40px;
+    stroke: #000;
+    cursor: pointer;
+}
+
+video {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+
+.nav-container {
+    position: relative;
+    z-index: 1002; 
+}
+
+
+.menu-icon {
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    z-index: 1002;
+    transition: left 0.3s ease-in-out;
+}
+
+
+.menu-icon img {
+   min-width: 100%;
+    height: 80px;
+    cursor: pointer;
+}
+h5{ color: #f57f17;
+   
+}
+
+footer{
+    align-items: center;
+    justify-content: center;
+    background-color:#f57f17;
+    display: flex;
+}
+
+nav{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color:  #020144;
+    color: #f9a825;
+    position: fixed;
+    width: 0;
+    top: 0;
+    left: 0;
+    height: 10vh;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    z-index: 1001;
+}
+
+
+nav.open {
+    width: 100%;
+}
+
+nav a  {
+    margin: 0 15px;
+    display: flex;
+    color: #f9a825;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+
+.nav-container:hover nav {
+    width: 100%;
+}
+
+
+.nav-container:hover .menu-icon {
+    left: calc(100% - 60px); 
+}
+
+
+.container {
+    padding: 60px 20px;
+    z-index: 1; 
+    position: relative;
+}
+
+
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+.character-item {
+    overflow: hidden;
+    width: calc(33% - 20px);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.character-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+
+.character-item img {
+    max-width: 60%;
+    height: 800px;
+    border-bottom: 2px solid #f57f17;
+}
+
+.character-item h2 {
+    font-size: 40px;
+    margin: 10px 0;
+    color:#f57f17;
+}
+
+
+.character-item p {
+    font-size: 30px;
+    color: #000000;
+}
+
+
+@media (max-width: 768px) {
+    .character-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .character-item {
+        width: 100%;
+    }
+}
+
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f57f17;
+    animation: fadeIn 2s;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.carousel img {
+    height: 50vh;
+    width: 100%; 
+    object-fit: contain; 
+}
+.input1-group {
+
+    width: 30%;
+}
+
+
+.form-check {
+    margin: 0 10px;
+}
+
+.input-group {
+    max-width: 600px;
+}
+
+
+.character-section{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+/* Estilo para la cuadrícula de tarjetas */
+
+  
+  .flip-card {
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%; /* Asegura que las tarjetas no se desborden */
+    height: 350px; /* Ajusta la altura según sea necesario */
+    perspective: 1000px; /* Necesario para el efecto de voltear */
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+  }
+  
+  .flip-card-back {
+    /* display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center; */
+ 
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-text {
+    font-size: 0.875rem;
+  }
+
+
+
+
+/* General Resets */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +293,7 @@ img {
 }
 
 /* Iconos */
-.icon-cart {
+.icon-cart-custom {
     width: 40px;
     height: 40px;
     stroke: #000;
@@ -27,7 +301,7 @@ img {
 }
 
 /* Estilos del Header */
-header {
+.header-custom {
     display: flex;
     justify-content: space-between;
     padding: 30px 0 40px 0;
@@ -37,11 +311,11 @@ header {
     text-shadow: 2px 2px 4px #000000;
 }
 
-.container-icon {
+.container-icon-custom {
     position: relative;
 }
 
-.count-products {
+.count-products-custom {
     position: absolute;
     top: 0;
     right: 0;
@@ -57,28 +331,20 @@ header {
 }
 
 /* Fondo Oscuro del Modal */
-.overlay {
+.overlay-custom {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
     display: none;
-    z-index: 999;
+    z-index: 999; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 /* Modal del Carrito */
-.modal-cart {
+.modal-cart-custom {
     position: fixed;
-            
-            width: 300px;
-            height: 100%;
-            background: white;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-            
-            
-            
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -88,7 +354,6 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 600px;
-    
     transition: opacity 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
@@ -96,7 +361,7 @@ header {
 }
 
 /* Botón de Cerrar Modal */
-.close-modal {
+.close-modal-custom {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -108,28 +373,32 @@ header {
     transition: color 0.3s ease;
 }
 
-.close-modal:hover {
+.close-modal-custom:hover {
     color: red;
 }
 
 /* Mostrar Modal y Overlay */
-.overlay.show,
-.modal-cart.show {
+.overlay-custom.show,
+.modal-cart-custom.show {
     display: block;
     opacity: 1;
 }
-.modal-cart.visible {
+
+.modal-cart-custom.visible {
     transform: translateX(0);
 }
-.overlay.visible,
-.modal-cart.visible {
+
+.overlay-custom.visible,
+.modal-cart-custom.visible {
     display: block;
 }
-.close-modal {
+
+.close-modal-custom {
     cursor: pointer;
 }
+
 /* Contenedor de Productos en el Carrito */
-.cart-row-product {
+.cart-row-product-custom {
     max-height: 400px;
     overflow-y: auto;
     padding: 10px;
@@ -139,7 +408,7 @@ header {
 }
 
 /* Tarjetas de Productos en el Carrito */
-.cart-item {
+.cart-item-custom {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -147,7 +416,7 @@ header {
 }
 
 /* Ajustes para el contenedor de la imagen */
-.cart-item-figure {
+.cart-item-figure-custom {
     width: 80px; /* O el ancho que prefieras */
     margin: 0;
     display: flex;
@@ -155,13 +424,13 @@ header {
     justify-content: center; /* Centra horizontalmente */
 }
 
-.cart-item-figure img {
+.cart-item-figure-custom img {
     max-width: 100%; /* Asegúrate de que la imagen no exceda el contenedor */
     height: auto; /* Mantén la proporción de la imagen */
 }
 
 /* Ajustes para la información del producto en el carrito */
-.cart-info-product {
+.cart-info-product-custom {
     flex-grow: 1;
     padding: 0 10px;
     display: flex;
@@ -169,13 +438,13 @@ header {
     justify-content: space-between; /* Espacia el contenido de manera uniforme */
 }
 
-.cart-quantity-container {
+.cart-quantity-container-custom {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.cart-quantity-container button {
+.cart-quantity-container-custom button {
     width: 30px;
     height: 30px;
     background-color: #fff;
@@ -184,7 +453,7 @@ header {
     cursor: pointer;
 }
 
-.cart-btn-remove {
+.cart-btn-remove-custom {
     background-color: #ff4c4c;
     border: none;
     color: #fff;
@@ -194,23 +463,23 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.cart-btn-remove:hover {
+.cart-btn-remove-custom:hover {
     background-color: #e04040;
 }
 
-.cart-total-price {
+.cart-total-price-custom {
     font-weight: bold;
     margin-left: auto;
     font-size: 16px;
     color: #000;
 }
 
-.cart-actions {
+.cart-actions-custom {
     text-align: center;
     margin-top: 20px;
 }
 
-.btn-buy {
+.btn-buy-custom {
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
@@ -221,35 +490,36 @@ header {
 }
 
 /* Contenedor de Ítems de la Tienda */
-.container-items {
+.container-items-custom {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.item {
+.item-custom {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #fff; /* Fondo blanco sólido para las tarjetas */
     transition: transform 0.5s, box-shadow 0.5s;
 }
 
-.item:hover {
+.item-custom:hover {
     transform: scale(1.02);
 }
 
-.item img {
+.item-custom img {
     width: 100%;
     height: 300px;
     object-fit: cover;
     transition: transform 0.5s;
 }
 
-.item:hover img {
+.item-custom:hover img {
     transform: scale(1.2);
 }
 
-.info-product {
+.info-product-custom {
     padding: 15px 30px;
     line-height: 2;
     display: flex;
@@ -257,12 +527,12 @@ header {
     gap: 10px;
 }
 
-.price {
+.price-custom {
     font-size: 18px;
     font-weight: 900;
 }
 
-.info-product button {
+.info-product-custom button {
     border: none;
     background-color: #000;
     color: #fff;
@@ -271,19 +541,19 @@ header {
 }
 
 /* Mensajes y Elementos Ocultos */
-.hidden-cart {
+.hidden-cart-custom {
     display: none;
 }
 
 /* Mensaje de carrito vacío */
-.cart-empty-message {
+.cart-empty-message-custom {
     text-align: center;
     font-size: 18px;
     color: #666;
     padding: 20px 0;
 }
 
-.container {
+.container-custom {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -293,7 +563,7 @@ header {
 }
 
 /* Estilo para el formulario */
-.form-container {
+.form-container-custom {
     width: 100%;
     max-width: 500px;
     border-radius: 12px;
@@ -301,7 +571,7 @@ header {
 }
 
 /* Estilo para el formulario visible */
-.form-visible {
+.form-visible-custom {
     background-color: #fff;
     padding: 30px;
     border-radius: 12px;
@@ -324,6 +594,17 @@ header {
 
 #message.visible {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación de aparición del mensaje */
+#message-enter-active {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+#message-enter-to {
     opacity: 1;
     transform: translateY(0);
 }
