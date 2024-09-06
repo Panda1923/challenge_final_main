@@ -12,32 +12,7 @@
     <video src="../assets/naruto-8.mp4" autoplay muted loop type="video/mp4"></video>
 
     <div id="app">
-        <header class="header-custom ">
-            <div class="nav-container">
-                <div class="menu-icon" id="menuIcon">
-                  <img class="logo" src="../assets/naruto-removebg-preview.png" alt="Menu Icon">
-                </div>
-                <nav class="navbar navbar-expand-md navbar-light" id="navbar">
-                  <a class="navbar-brand d-md-none" href="#home">Home</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <nav id="navbar-nav" class="justify-content-center">
-                      <a href="#home" class="nav-link">
-                        <img class="logo" src="../assets/HOME (1).png" alt="Home">
-                      </a>
-                      <a href="#about" class="nav-link">
-                        <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
-                      </a>
-                      <a href="../pages/store.html" class="nav-link">
-                        <img class="logo" src="../assets/STORE.png" alt="Store">
-                      </a>
-                    </nav>
-                  </div>
-                </nav>
-              </div>
-            </header>
+        <header-component></header-component>
             
               <div class="container-icon-custom">
                 <div class="container-cart-icon-custom" @click="toggleCart">
@@ -104,5 +79,6 @@
     </footer>
     <audio id="hoverSound" src="../assets/Voicy_Narutooo Sasukeee.mp3" preload="auto"></audio>
     <script src="../scripts/store.js"></script>
+    <script src="/naruto/scripts/main.js"></script>
 </body>
 </html>

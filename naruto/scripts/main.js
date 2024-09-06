@@ -15,7 +15,7 @@ Vue.component('header-component', {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <nav id="navbar-nav" class="justify-content-center">
-              <a href="#home" class="nav-link">
+              <a href="../pages/index.html" class="nav-link">
                 <img class="logo" src="../assets/HOME (1).png" alt="Home">
               </a>
               <a href="#about" class="nav-link">
@@ -139,6 +139,7 @@ Vue.component('characters-section', {
   data() {
     return {
       characters: [], // Almacenará todos los personajes
+      characterIds: new Set(), // Almacena los IDs de personajes para evitar duplicados
       errorMessage: null, // Para manejar errores
       currentPage: 1, // Página actual
       totalPages: null, // Total de páginas
@@ -158,8 +159,19 @@ Vue.component('characters-section', {
         .then(response => response.json())
         .then(data => {
           console.log(data); // Verificar la estructura de los datos en consola
+          const newCharacters = data.characters || [];
+          
+          // Filtrar personajes duplicados
+          const filteredCharacters = newCharacters.filter(character => {
+            if (this.characterIds.has(character.id)) {
+              return false; // Ya se ha cargado este personaje
+            }
+            this.characterIds.add(character.id);
+            return true;
+          });
+
           // Acumula los personajes obtenidos
-          this.characters = [...this.characters, ...Object.values(data.characters || [])];
+          this.characters = [...this.characters, ...filteredCharacters];
           this.totalPages = data.totalPages || 1;
 
           // Si hay más páginas, cargar la siguiente
@@ -251,9 +263,6 @@ Vue.component('characters-section', {
     </div>
   </div>
 </section>
-
-
-
   `
 });
 
