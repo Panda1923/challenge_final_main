@@ -19,10 +19,26 @@
 
         <!-- Barra de Navegación y contenido principal -->
         <main-component></main-component>
-
+<!-- Interruptores para mostrar personajes y clanes -->
+<form class="d-flex flex-column flex-md-row justify-content-center mb-4 align-items-center">
+    <!-- Interruptor para "Personajes" -->
+    <div class="form-check form-switch mx-2">
+      <input class="form-check-input" type="checkbox" id="charactersSwitch" @change="$root.toggleCharacters">
+      <label class="form-check-label" for="charactersSwitch">Personajes</label>
+    </div>
+  
+    <!-- Interruptor para "Clanes" -->
+    <div class="form-check form-switch mx-2">
+      <input class="form-check-input" type="checkbox" id="clansSwitch" @change="$root.toggleClans">
+      <label class="form-check-label" for="clansSwitch">Clanes</label>
+    </div>
+  </form>
+  
         <!-- Sección de Personajes -->
         <characters-section></characters-section>
-
+        <characters-section :show="showCharacters"></characters-section>
+        <clans-section></clans-section>
+        <clans-section :show="showClans"></clans-section>
         <!-- Footer -->
         <footer-component></footer-component>
     </div>

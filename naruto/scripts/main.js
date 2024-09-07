@@ -1,5 +1,3 @@
-
-// 2daprueba
 // Componente Header
 Vue.component('header-component', {
   template: `
@@ -36,7 +34,7 @@ Vue.component('header-component', {
 Vue.component('main-component', {
   template: `
     <main class="flex-grow-1">
-      <div id="carouselExampleDark" class="carousel carousel-dark slide">
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -45,7 +43,7 @@ Vue.component('main-component', {
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000">
+          <div class="carousel-item active" data-bs-interval="1000">
             <img src="../assets/pngwing.com (7).png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-md-block"></div>
           </div>
@@ -76,35 +74,6 @@ Vue.component('main-component', {
         </button>
       </div>
 
-  
-
-      <!-- Formulario de búsqueda con interruptores -->
-      <div class="container-fluid">
-        <form class="d-flex flex-column flex-md-row justify-content-center mb-4 align-items-center">
-          <!-- Interruptor para "Personajes" -->
-          <div class="form-check form-switch mx-2">
-            <input class="form-check-input" type="checkbox" id="charactersSwitch">
-            <label class="form-check-label" for="charactersSwitch">Personajes</label>
-          </div>
-          
-          <!-- Campo de texto y botón de búsqueda -->
-          <div class="input-group mb-3 mx-2">
-            <input type="text" class="form-control" id="searchInput" placeholder="Buscar...">
-            <button class="btn btn-primary" type="submit" id="searchButton">Buscar</button>
-          </div>
-
-          <!-- Interruptor para "Clanes" -->
-          <div class="form-check form-switch mx-2">
-            <input class="form-check-input" type="checkbox" id="clansSwitch">
-            <label class="form-check-label" for="clansSwitch">Clanes</label>
-          </div>
-
-          
-          
-          <div id="message" class="mt-2"></div>
-        </form>
-
-
              <div class="container mt-4" id="characters">
             <h2 class="section-title">Personajes</h2>
             <div class="character-list">
@@ -126,11 +95,7 @@ Vue.component('main-component', {
             </div>
         </div>
       </div>
-
-      <characters-section></characters-section>
-
-      
-    </main>
+</main>
   `
 });
 
@@ -241,7 +206,7 @@ Vue.component('characters-section', {
                 :alt="character.name"
               >
               <div v-else>
-                <img src="/naruto/assets/b8fd821c02183a8d19765c9362bf2465.jpg" class="card-img-top" alt="Imagen predeterminada">
+                <img src="/naruto/assets/4fba09dde681e2db50ea2d2d57bbee90.jpg" class="card-img-top" alt="Imagen predeterminada">
               </div>
             </div>
             <!-- Lado posterior de la tarjeta -->
@@ -265,6 +230,97 @@ Vue.component('characters-section', {
 </section>
   `
 });
+
+// Componente de Clanes
+Vue.component('clans-section', {
+  data() {
+    return {
+      clans: [], // Almacena todos los clanes
+      errorMessage: null, // Para manejar errores
+      currentPage: 1, // Página actual
+      totalPages: 0 // Total de páginas a cargar
+    };
+  },
+  mounted() {
+    this.loadClans(); // Cargar los clanes cuando el componente se monte
+  },
+  methods: {
+    // Método para cargar los clanes
+    loadClans() {
+      const url = `https://narutodb.xyz/api/clan?page=1&limit=50`;
+      const pageSize = 50;
+
+      const fetchPage = (page) => {
+        fetch(`${url}?page=${page}&limit=${pageSize}`)
+          .then(response => response.json()) // Convertir respuesta a JSON
+          .then(data => {
+            console.log(data); // Mostrar el JSON para verificar la estructura
+
+            if (data && data.clans) {
+              const sortedClans = data.clans.sort((a, b) => a.name.localeCompare(b.name)); 
+              this.clans = [...this.clans, ...sortedClans]; 
+
+              this.totalPages = Math.ceil(data.total / pageSize);
+
+              if (page < this.totalPages) {
+                this.currentPage++;
+                fetchPage(this.currentPage);
+              }
+            } else {
+              console.error('Formato inesperado de datos:', data);
+            }
+          })
+          .catch(error => {
+            console.error('Error en la obtención de datos:', error);
+            this.errorMessage = `No se pudo cargar la información: ${error.message}`;
+          });
+      };
+
+      fetchPage(this.currentPage);
+    }
+  },
+  template: `
+    <section class="character-section">
+      <h2 class="text-center mb-4">Clanes de Naruto</h2>
+      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+      <div class="tarjetas">
+        <div class="row">
+          <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img 
+                    v-if="clan.image" 
+                    :src="/naruto/assets/clan-naruto_3htx.jpg" 
+                    class="card-img-top" 
+                    :alt="clan.name"
+                  >
+                  <div v-else>
+                    <img src="/naruto/assets/clan-naruto_3htx.jpg" class="card-img-top" alt="Imagen predeterminada">
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="card-body p-5">
+                    <h5 class="card-title">{{ clan.name }}</h5>
+                    <p class="card-text"><strong>Descripción:</strong> {{ clan.description || 'No disponible' }}</p>
+                    <p class="card-text"><strong>Aldea:</strong> {{ clan.village || 'No disponible' }}</p>
+                    <p class="card-text"><strong>Personajes:</strong> 
+                      <span v-if="clan.characters && clan.characters.length > 0">
+                        {{ clan.characters.map(character => character.name).join(', ') }}
+                      </span>
+                      <span v-else>No hay personajes asociados.</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `
+});
+
 
 // Componente Footer
 Vue.component('footer-component', {
@@ -291,14 +347,135 @@ Vue.component('footer-component', {
 
   `
 });
+//
+Vue.component('characters-section', {
+  props: ['show'],  // Añadir prop para controlar la visibilidad
+  data() {
+    return {
+      characters: [],
+      errorMessage: null,
+    };
+  },
+  watch: {
+    show(newVal) { // Reactividad cuando cambie el valor de 'show'
+      if (newVal) {
+        this.loadCharacters();
+      }
+    }
+  },
+  methods: {
+    loadCharacters() {
+      const url = `https://dattebayo-api.onrender.com/characters?page=1&limit=200`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.characters = data.characters || [];
+        })
+        .catch(error => {
+          this.errorMessage = `No se pudo cargar la información: ${error.message}`;
+        });
+    }
+  },
+  template: `
+    <section v-if="show" class="character-section">
+      <h2 class="text-center mb-4">Personajes de Naruto</h2>
+      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+      <div class="tarjetas">
+        <div class="row">
+          <div v-for="character in characters" :key="character.id" class="col-md-3 mb-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img :src="character.images[0]" class="card-img-top" :alt="character.name">
+                </div>
+                <div class="flip-card-back">
+                  <h5 class="card-title">{{ character.name }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `
+});
+;
+
+// Componente ClansSection
+Vue.component('clans-section', {
+  props: ['show'],  // Añadir prop para controlar la visibilidad
+  data() {
+    return {
+      clans: [],
+      errorMessage: null,
+    };
+  },
+  watch: {
+    show(newVal) { // Reactividad cuando cambie el valor de 'show'
+      if (newVal) {
+        this.loadClans();
+      }
+    }
+  },
+  methods: {
+    loadClans() {
+      const url = `https://narutodb.xyz/api/clan?page=1&limit=50`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.clans = data.clans || [];
+        })
+        .catch(error => {
+          this.errorMessage = `No se pudo cargar la información: ${error.message}`;
+        });
+    }
+  },
+  template: `
+    <section v-if="show" class="clans-section">
+      <h2 class="text-center mb-4">Clanes de Naruto</h2>
+      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+      <div class="tarjetas">
+        <div class="row">
+          <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img :src="clan.image" class="card-img-top" :alt="clan.name">
+                </div>
+                <div class="flip-card-back">
+                  <h5 class="card-title">{{ clan.name }}</h5>
+                  <p class="card-text">{{ clan.description || 'No disponible' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `
+});
+
 
 // Inicializar Vue
 new Vue({
   el: '#app',
+  data: {
+    showCharacters: false, // Controla la visibilidad de los personajes
+    showClans: false, // Controla la visibilidad de los clanes
+  },
   mounted() {
-    this.efectoSonidoNavbar();
+    this.efectoSonidoNavbar(); // Ejecutar el método cuando el componente esté montado
   },
   methods: {
+    // Método para alternar la visibilidad de personajes
+    toggleCharacters() {
+      this.showCharacters = !this.showCharacters;
+    },
+    // Método para alternar la visibilidad de clanes
+    toggleClans() {
+      this.showClans = !this.showClans;
+    },
+    // Método para agregar el efecto de sonido al pasar por el navbar
     efectoSonidoNavbar() {
       const hoverSound = document.getElementById('hoverSound');
       const navbar = document.getElementById('navbar');
