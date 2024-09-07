@@ -671,11 +671,13 @@ img {
     background-color: transparent !important;
 }
 
+/* Estilo para que el titulo "imagen" tenga un tamaño fijo*/
 .img-titulo-stats{
     max-height: 800px;
     max-width: auto;
 }
 
+/* Estilo para que la imagen del titulo tenga un tamaño */
 .img-stats-naruto{
     max-height: 350px;
     max-width: auto;
