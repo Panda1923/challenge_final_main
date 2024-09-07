@@ -18,7 +18,7 @@ Vue.component('header-component', {
               <a href="../pages/index.html" class="nav-link">
                 <img class="logo" src="../assets/HOME (1).png" alt="Home">
               </a>
-              <a href="#about" class="nav-link">
+              <a href="../pages/stats.html" class="nav-link">
                 <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
               </a>
               <a href="../pages/store.html" class="nav-link">

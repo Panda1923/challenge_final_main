@@ -669,3 +669,23 @@ img {
     margin-right: 6px;
   
 } 
+
+/*Opaca un poco la tabla de stats para darle estilo*/
+.table-stats {
+    opacity: 0.8;
+}
+
+/* Estilo para el body de la página stats con fondo transparente*/
+.body-stats{
+    background-color: transparent !important;
+}
+
+.img-titulo-stats{
+    max-height: 800px;
+    max-width: auto;
+}
+
+.img-stats-naruto{
+    max-height: 350px;
+    max-width: auto;
+}
