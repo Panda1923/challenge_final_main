@@ -829,7 +829,7 @@ p .strong-details {
 
 .interactive-image {
     cursor: pointer;
-    animation: pulse 1.5s infinite;
+    animation: pulseImagenn 1.5s infinite;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
@@ -841,7 +841,7 @@ p .strong-details {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes pulse {
+@keyframes pulseImagenn {
     0% {
         transform: scale(1);
     }
