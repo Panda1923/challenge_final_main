@@ -217,7 +217,7 @@ Vue.component('characters-section', {
               </div>
               <div class="d-flex justify-content-around align-items-center mt-2">
                 <button class="btn btn-info">Details</button>
-                <button class="btn btn-primary">Buy</button>
+                 <a href="store.html" class="btn btn-info">Buy</a>
               </div>
             </div>
           </div>
