@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchase Form</title>
+    <link rel="shortcut icon" href="../assets/pngwing.com.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
    
@@ -12,7 +13,7 @@
     
     <div id="app" >
         <!-- Formulario de Compra -->
-        <div v-if="showPurchaseForm" class="card mx-auto formulario-container form-container-custom" >
+        <div v-if="showPurchaseForm" class="card mx-auto  formulario-container form-container-custom" >
           <div class="card-body form-visible-custom">
             <h2 class="card-title text-center">Purchase Form</h2>
             <form @submit.prevent="submitForm">
@@ -37,10 +38,11 @@
         </div>
       
         <!-- Mensaje de Confirmación -->
-        <div v-if="submitted" class="confirmation-message text-center mt-2" ">
+        <div v-if="submitted" class="confirmation-message text-center mt-1" >
           <h2>Thank you for your purchase!</h2>
           <p>Your order will be arriving in a few days.</p>
-          
+          <a href="index.html" class="btn-buy-custom">Return to home</a>
+          <a href="store.html" class="btn-buy-custom">Continue shopping</a>
         </div>
       </div>
       
