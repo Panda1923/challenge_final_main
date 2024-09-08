@@ -16,7 +16,7 @@ Vue.component('header-component', {
               <a href="../pages/index.html" class="nav-link">
                 <img class="logo" src="../assets/HOME (1).png" alt="Home">
               </a>
-              <a href="#about" class="nav-link">
+              <a href="../pages/stats.html" class="nav-link">
                 <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
               </a>
               <a href="../pages/store.html" class="nav-link">
@@ -193,11 +193,9 @@ Vue.component('characters-section', {
   <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
   <div class="tarjetas">
     <div class="row">
-      <!-- Iterar sobre cada personaje -->
       <div v-for="character in characters" :key="character.id" class="col-md-3 mb-4">
         <div class="flip-card">
           <div class="flip-card-inner">
-            <!-- Lado frontal de la tarjeta -->
             <div class="flip-card-front">
               <img 
                 v-if="character.images && character.images.length" 
@@ -215,10 +213,11 @@ Vue.component('characters-section', {
                 <h5 class="card-title">{{ character.name }}</h5>
                 <p class="card-text"><strong>Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
                 <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
+                 <p class="card-text"><strong>Debut:</strong> {{ formatDebut(character.debut) }}</p>
               </div>
               <div class="d-flex justify-content-around align-items-center mt-2">
                 <button class="btn btn-info">Details</button>
-                <button class="btn btn-primary">Buy</button>
+                 <a href="store.html" class="btn btn-info">Buy</a>
               </div>
             </div>
           </div>
@@ -280,45 +279,40 @@ Vue.component('clans-section', {
     }
   },
   template: `
-    <section class="character-section">
-      <h2 class="text-center mb-4">Clanes de Naruto</h2>
-      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-      <div class="tarjetas">
-        <div class="row">
-          <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img 
-                    v-if="clan.image" 
-                    :src="/naruto/assets/clan-naruto_3htx.jpg" 
-                    class="card-img-top" 
-                    :alt="clan.name"
-                  >
-                  <div v-else>
-                    <img src="/naruto/assets/clan-naruto_3htx.jpg" class="card-img-top" alt="Imagen predeterminada">
-                  </div>
-                </div>
-                <div class="flip-card-back">
-                  <div class="card-body p-5">
-                    <h5 class="card-title">{{ clan.name }}</h5>
-                    <p class="card-text"><strong>Descripción:</strong> {{ clan.description || 'No disponible' }}</p>
-                    <p class="card-text"><strong>Aldea:</strong> {{ clan.village || 'No disponible' }}</p>
-                    <p class="card-text"><strong>Personajes:</strong> 
-                      <span v-if="clan.characters && clan.characters.length > 0">
-                        {{ clan.characters.map(character => character.name).join(', ') }}
-                      </span>
-                      <span v-else>No hay personajes asociados.</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+  <section class="character-section">
+    <h2 class="text-center mb-4">Clanes de Naruto</h2>
+    <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+    <div class="tarjetas">
+      <div class="row">
+        <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
+          <div class="card shadow-sm rounded h-100"> <!-- Aplicamos estilos adicionales -->
+            <!-- Parte frontal de la tarjeta -->
+            <img 
+              v-if="clan.image" 
+              :src="clan.image" 
+              class="card-img-top img-fluid rounded-top" 
+              :alt="clan.name">
+            <img 
+              v-else 
+              src="/naruto/assets/clan-naruto_3htx.jpg" 
+              class="card-img-top h-50 img-fluid rounded-top" 
+              alt="Imagen predeterminada">
+            <div class="card-body">
+              <h5 class="card-title text-center text-uppercase">{{ clan.name }}</h5>
+              <p class="card-text"><strong>Personajes:</strong> 
+                <span v-if="clan.characters && clan.characters.length > 0">
+                  {{ clan.characters.map(character => character.name).join(', ') }}
+                </span>
+                <span v-else>No hay personajes asociados.</span>
+              </p>
+              <a :href="'/naruto/pages/stats.html'" class="btn btn-primary btn-block mt-auto">Ver stats</a> <!-- Botón estilo Bootstrap -->
             </div>
           </div>
         </div>
       </div>
-    </section>
-  `
+    </div>
+  </section>
+`
 });
 
 
@@ -347,134 +341,16 @@ Vue.component('footer-component', {
 
   `
 });
-//
-Vue.component('characters-section', {
-  props: ['show'],  // Añadir prop para controlar la visibilidad
-  data() {
-    return {
-      characters: [],
-      errorMessage: null,
-    };
-  },
-  watch: {
-    show(newVal) { // Reactividad cuando cambie el valor de 'show'
-      if (newVal) {
-        this.loadCharacters();
-      }
-    }
-  },
-  methods: {
-    loadCharacters() {
-      const url = `https://dattebayo-api.onrender.com/characters?page=1&limit=200`;
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.characters = data.characters || [];
-        })
-        .catch(error => {
-          this.errorMessage = `No se pudo cargar la información: ${error.message}`;
-        });
-    }
-  },
-  template: `
-    <section v-if="show" class="character-section">
-      <h2 class="text-center mb-4">Personajes de Naruto</h2>
-      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-      <div class="tarjetas">
-        <div class="row">
-          <div v-for="character in characters" :key="character.id" class="col-md-3 mb-4">
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img :src="character.images[0]" class="card-img-top" :alt="character.name">
-                </div>
-                <div class="flip-card-back">
-                  <h5 class="card-title">{{ character.name }}</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  `
-});
-;
-
-// Componente ClansSection
-Vue.component('clans-section', {
-  props: ['show'],  // Añadir prop para controlar la visibilidad
-  data() {
-    return {
-      clans: [],
-      errorMessage: null,
-    };
-  },
-  watch: {
-    show(newVal) { // Reactividad cuando cambie el valor de 'show'
-      if (newVal) {
-        this.loadClans();
-      }
-    }
-  },
-  methods: {
-    loadClans() {
-      const url = `https://narutodb.xyz/api/clan?page=1&limit=50`;
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.clans = data.clans || [];
-        })
-        .catch(error => {
-          this.errorMessage = `No se pudo cargar la información: ${error.message}`;
-        });
-    }
-  },
-  template: `
-    <section v-if="show" class="clans-section">
-      <h2 class="text-center mb-4">Clanes de Naruto</h2>
-      <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-      <div class="tarjetas">
-        <div class="row">
-          <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img :src="clan.image" class="card-img-top" :alt="clan.name">
-                </div>
-                <div class="flip-card-back">
-                  <h5 class="card-title">{{ clan.name }}</h5>
-                  <p class="card-text">{{ clan.description || 'No disponible' }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  `
-});
-
 
 // Inicializar Vue
 new Vue({
   el: '#app',
   data: {
-    showCharacters: false, // Controla la visibilidad de los personajes
-    showClans: false, // Controla la visibilidad de los clanes
   },
   mounted() {
     this.efectoSonidoNavbar(); // Ejecutar el método cuando el componente esté montado
   },
   methods: {
-    // Método para alternar la visibilidad de personajes
-    toggleCharacters() {
-      this.showCharacters = !this.showCharacters;
-    },
-    // Método para alternar la visibilidad de clanes
-    toggleClans() {
-      this.showClans = !this.showClans;
-    },
     // Método para agregar el efecto de sonido al pasar por el navbar
     efectoSonidoNavbar() {
       const hoverSound = document.getElementById('hoverSound');

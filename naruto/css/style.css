@@ -52,10 +52,10 @@ h5 {
 
 }
 
-footer {
+footer{
     align-items: center;
     justify-content: center;
-    background-color: #f57f17;
+    background-color:#f57f17;
     display: flex;
 }
 
@@ -613,7 +613,12 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para el formulario visible */
+
+.formulario-container {
+    max-width: 400px;
+    margin-top: 10px;
+}
+
 .form-visible-custom {
     background-color: #fff;
     padding: 30px;
@@ -622,34 +627,27 @@ img {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Estilo para el mensaje de confirmación */
-#message {
-    display: none;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+.confirmation-message {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto; /* Asegura que esté centrado */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+    ;
 }
 
-#message.visible {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Animación de aparición del mensaje */
-#message-enter-active {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-#message-enter-to {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .footer-custom {
@@ -702,8 +700,8 @@ img {
     height: 20px;
     vertical-align: middle;
     margin-right: 6px;
-
-}
+  
+} 
 
 /* ESTILOS PAGE DE DETAILS */
 /* Estilos generales */
