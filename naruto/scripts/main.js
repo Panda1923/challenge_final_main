@@ -74,26 +74,6 @@ Vue.component('main-component', {
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-
-             <div class="container mt-4" id="characters">
-            <h2 class="section-title"><img src="../assets/personajes principales.png" alt=""></h2>
-            <div class="character-list">
-               
-                <div class="character-item">
-                    <img src="../assets/pngegg (5).png" alt="Sakura Haruno">
-                    <h2>Sakura Haruno</h2>
-                    <p>Compañera de equipo de Naruto y Sasuke, experta en ninjutsu médico.</p>
-                </div>
-                 <div class="character-item">
-                    <img src="../assets/pngegg (4).png" alt="Naruto Uzumaki">
-                    <h2>Naruto Uzumaki</h2>
-                    <p> Naruto Uzumaki es un niño marginado en la aldea ninja en la que vive. En su interior reside el poder de una bestia que estuvo al borde de destruir el pueblo años atrás.</p>
-                </div>
-                <div class="character-item">
-                    <img src="../assets/pngwing.com (8).png" alt="Sasuke Uchiha">
-                    <h2>Sasuke Uchiha</h2>
-                    <p>Uno de los mejores amigos y rivales de Naruto.</p>
-                </div>
             </div>
         </div>
       </div>
@@ -250,6 +230,7 @@ Vue.component('clans-section', {
   mounted() {
     this.loadClans(); // Cargar los clanes cuando el componente se monte
   },
+  
   methods: {
     // Método para cargar los clanes
     loadClans() {
@@ -287,16 +268,13 @@ Vue.component('clans-section', {
   },
   template: `
   <section class="character-section">
-  <h2 class="text-center mb-4">
-   <img src="../assets/clans.png" alt="">
-  </h2>
-  <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-  <div class="tarjetas">
-    <div v-for="clan in clans" :key="clan.id" class="card-container col-md-4 mb-4">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <!-- Lado frontal de la tarjeta -->
-          <div class="flip-card-front">
+    <h2 class="text-center mb-4">Clanes de Naruto</h2>
+    <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+    <div class="tarjetas">
+      <div class="row">
+        <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
+          <div class="card shadow-sm rounded h-100"> <!-- Aplicamos estilos adicionales -->
+            <!-- Parte frontal de la tarjeta -->
             <img 
               v-if="clan.image" 
               :src="clan.image" 
@@ -362,6 +340,9 @@ Vue.component('footer-component', {
 new Vue({
   el: '#app',
   data: {
+    showAll: true,         // Mostrar todo inicialmente
+    showCharacters: false,  // Mostrar personajes por defecto
+    showClans: false       // No mostrar clanes por defecto
   },
   mounted() {
     this.efectoSonidoNavbar(); // Ejecutar el método cuando el componente esté montado
