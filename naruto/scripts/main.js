@@ -263,24 +263,30 @@ Vue.component('clans-section', {
   },
   template: `
   <section class="character-section">
-    <h2 class="text-center mb-4">Clanes de Naruto</h2>
-    <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-    <div class="tarjetas">
-      <div class="row">
-        <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
-          <div class="card shadow-sm rounded h-100"> 
-            <!-- Parte frontal de la tarjeta -->
+  <h2 class="text-center mb-4">
+   <img src="../assets/clans.png" alt="">
+  </h2>
+  <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+  <div class="tarjetas">
+    <div v-for="clan in clans" :key="clan.id" class="card-container col-md-4 mb-4">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <!-- Lado frontal de la tarjeta -->
+          <div class="flip-card-front">
             <img 
               v-if="clan.image" 
               :src="clan.image" 
-              class="card-img-top img-fluid rounded-top" 
+              class="card-img-top" 
               :alt="clan.name">
             <img 
               v-else 
-              src="/naruto/assets/clan-naruto_3htx.jpg" 
-              class="card-img-top h-50 img-fluid rounded-top" 
+              src="../assets/clan-naruto_3htx.jpg" 
+              class="card-img-top" 
               alt="Imagen predeterminada">
-            <div class="card-body">
+          </div>
+          <!-- Lado posterior de la tarjeta -->
+          <div class="flip-card-back">
+            <div class="card-body p-4">
               <h5 class="card-title text-center text-uppercase">{{ clan.name }}</h5>
               <p class="card-text"><strong>Personajes:</strong> 
                 <span v-if="clan.characters && clan.characters.length > 0">
@@ -288,13 +294,16 @@ Vue.component('clans-section', {
                 </span>
                 <span v-else>No hay personajes asociados.</span>
               </p>
-              <a :href="'/naruto/pages/stats.html'" class="btn btn-primary btn-block mt-auto">Ver stats</a> <!-- Botón estilo Bootstrap -->
+            </div>
+            <div class="d-flex justify-content-around align-items-center mt-3">
+              <a :href="'/naruto/pages/stats.html'" class="btn btn-info">Details</a> <!-- Botón estilo Bootstrap -->
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 `
 });
 
