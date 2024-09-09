@@ -52,14 +52,13 @@ nav {
     display: flex;
     flex-direction: row;
     background-color: #e97406;
-  
     position: fixed;
     width: 0;
     top: 0;
     left: 0;
     height: 10vh;
     overflow: hidden;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.6s ease-in-out;
     z-index: 1001;
 }
 
@@ -90,6 +89,7 @@ nav a:hover {
 
 .nav-container:hover .menu-icon {
     left: calc(100% - 60px); 
+    opacity: 0;
 }
 
 .container {
@@ -184,9 +184,9 @@ h2 {
 /* Estilo para la cuadrícula de tarjetas */
 .flip-card {
     background-color: transparent;
-    width: 100%;
-    max-width: 100%; 
-    height: 350px; 
+    width: 400px;
+   
+    height: 600px; 
     perspective: 1000px;
 }
 
@@ -212,9 +212,11 @@ h2 {
 }
 
 .flip-card-front {
+    
     background-color: #bbb;
 }
 .flip-card-back {
+  
     color: white;
     transform: rotateY(180deg);
     display: flex;
@@ -225,7 +227,13 @@ h2 {
 }
 
 
-
+.card-body {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+}
 
 .d-flex {
     margin-top: auto; /* Asegura que los botones se mantengan en la parte inferior */
@@ -238,12 +246,14 @@ h2 {
 }
 
 .card-title {
-    font-size: 60px;
-    color: #f57f17;
+
+    padding: 5px;
+    font-size: 40px;
+    color: #030202;
 }
 
 .card-text {
-    font-size: 30px;
+    font-size: 25px;
     color:  #f57f17;
 }
 
@@ -327,6 +337,7 @@ img {
     z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
 
+/* Modal del Carrito */
 .modal-cart-custom {
     position: fixed;
     top: 50%;
@@ -334,15 +345,14 @@ img {
     transform: translate(-50%, -50%);
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px; /* Aumenta el padding para mayor espacio interno */
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
-    width: 95%; /* Aumenta el ancho a 95% de la pantalla */
-    max-width: 1200px; /* Aumenta el ancho máximo */
-    max-height: 90vh; /* Aumenta la altura máxima para que ocupe más espacio vertical */
-    
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
     transition: opacity 0.3s ease;
     z-index: 1001;
-    overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 /* Botón de Cerrar Modal */
@@ -569,7 +579,7 @@ img {
 }
 
 .form-visible-custom {
-    background-color: #fff;
+    background-color:transparent;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -599,7 +609,7 @@ img {
 }
 
 .footer-custom {
-    background-color: #333;
+    background-color: #e97406;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -612,6 +622,7 @@ img {
 
 .footer-description {
     margin: 10px 0;
+    font-size: 30px;
 }
 
 .footer-links {
@@ -632,7 +643,7 @@ img {
 }
 
 .footer-social-link img {
-    width: 100px;
+    width: 200px;
     height: 100px;
     vertical-align: middle;
     object-fit: contain;
@@ -667,8 +678,129 @@ img {
     max-width: auto;
 }
 
+
+.btn:hover {
+    color: black;
+    background-color:  #e97406;
+    border-color: black;
+}
+.btn{
+    height: 50px;
+    width: 100px;
+    background-color:  #e97406;
+    border-color: black;
+    font-size: 20px;
+}
+
+
+/* Contenedor de Tarjetas */
+.tarjetas {
+    display: flex;
+    gap: 7%; /* Espacio entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en una nueva línea si es necesario */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+}
+
+
+.card-container {
+    width: 400px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que el contenido no se desborde fuera de los bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra para mejorar la apariencia */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
 /* ESTILOS PAGE DETAILS */
-/* Estilos generales */
+
+.body-details {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5c300, #e67e22); /* Colores inspirados en Naruto */
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Evita el scroll hacia abajo */
+}
+
+#app-details {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 1000px; /* Ajusta el tamaño para el nuevo diseño */
+    text-align: left; /* Alineación a la izquierda para el texto */
+    display: flex; /* Utiliza flexbox para el diseño */
+    flex-direction: row; /* Coloca elementos en fila */
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+}
+
+/* Imagen de detalles */
+.img-details {
+    max-width: 40%; /* Ajusta el ancho de la imagen */
+    border-radius: 8px;
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    animation: pulse 2s infinite;
+}
+
+/* Contenedor de información */
+.details-info {
+    max-width: 60%; /* Ajusta el ancho del contenedor de texto */
+}
+
+/* Títulos */
+.h1-details {
+    font-size: 2.5em;
+    color: #ff3f34; /* Color inspirado en Naruto */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto de detalles */
+.p-details {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #eee;
+}
+
+.strong-details {
+    color: #ff3f34; /* Color inspirado en Naruto */
+}
+
+p .strong-details {
+    font-weight: bold;
+}
+
+.p-details:hover {
+    color: #f5c300;
+    text-shadow: 0 0 10px #f5c300;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Mensaje de error */
+#errorMessageee {
+    color: #f44336;
+    font-size: 1.2em;
+}
+
+/* Botón de detalles */
+.button-details {
+    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn{
+    background-color:  #e97406;
+    border-color: black;
+}
+
+
 .body-details {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -808,4 +940,27 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #f5c300, #ff3f34);
+}
+
+
+.btn:hover {
+    color: black;
+    background-color:  #e97406;
+    border-color: black;
+}
+.btn{
+    height: 50px;
+    width: 100px;
+    background-color:  #e97406;
+    border-color: black;
+    font-size: 20px;
+}
+
+
+
+.tarjetas {
+    display: flex;
+    gap: 5%; 
+    flex-wrap: wrap; 
+    justify-content: center; 
 }
