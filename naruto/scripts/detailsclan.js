@@ -76,10 +76,12 @@ Vue.component('character-details', {
     template: `
         <div>
             <h1 class="h1-details">{{ clan.name }}</h1>
-            <img class="img-details" src="/assets/clan-naruto_3htx.jpg" alt="Imagen generica clan">
+            <img class="img-details" src="/naruto/assets/clan-naruto_3htx.jpg" alt="Imagen generica clan">
             <p class="p-details"><strong class="strong-details">Characters per clan:</strong> {{ clan.characters ? clan.characters.length : 0 }}</p>
             <p class="p-details"><strong class="strong-details">Name of the characters:</strong> {{ characterNames }}</p>
             <p class="p-details" v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
+           
+
         </div>
     `
 });

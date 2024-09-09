@@ -302,7 +302,7 @@ Vue.component('clans-section', {
               </p>
             </div>
             <div class="d-flex justify-content-around align-items-center mt-3">
-               <button @click="goToDetails(character.name)" class="btn btn-info">Ver Detalles</button>
+                <a :href="'./detailsclan.html?name=' + clan.name" class="btn btn-info">Details</a>
             </div>
           </div>
         </div>
