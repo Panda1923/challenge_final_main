@@ -186,8 +186,13 @@ Vue.component('characters-section', {
     formatJutsu(jutsu) {
       if (!jutsu || !jutsu.length) return 'No disponible';
       return jutsu.join(', ');
+    },
+
+    goToDetails(characterId) {
+      window.location.href = `../pages/details.html?id=${characterId}`;
     }
   },
+
 
   template: `
 <section class="character-section">
