@@ -709,74 +709,59 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra para mejorar la apariencia */
     transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
 }
-/* ESTILOS PAGE DETAILS */
 
-.body-details {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f5c300, #e67e22); /* Colores inspirados en Naruto */
-    color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Evita el scroll hacia abajo */
-}
 
+
+/* Contenedor de la tarjeta */
 #app-details {
     background: rgba(20, 20, 20, 0.9);
-    padding: 20px;
+    padding: 20px; /* Asegura que haya suficiente espacio alrededor del contenido */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    width: 90%;
-    max-width: 1000px; /* Ajusta el tamaño para el nuevo diseño */
-    text-align: left; /* Alineación a la izquierda para el texto */
+    
+    max-width: 80%; /* Limita el ancho máximo */
     display: flex; /* Utiliza flexbox para el diseño */
-    flex-direction: row; /* Coloca elementos en fila */
-    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+    flex-direction: column; /* Cambia a columna para que los elementos se apilen verticalmente */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto dentro del contenedor de texto */
+    margin: auto; /* Centra el contenedor en el contenedor principal */
 }
 
 /* Imagen de detalles */
 .img-details {
-    max-width: 40%; /* Ajusta el ancho de la imagen */
+    width: 100%;  /* Asegura que la imagen se ajuste al ancho del contenedor */
+    max-width: 500px; /* Ajusta el ancho máximo de la imagen */
     border-radius: 8px;
-    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 20px; /* Espacio debajo de la imagen */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     animation: pulse 2s infinite;
 }
 
 /* Contenedor de información */
 .details-info {
-    max-width: 60%; /* Ajusta el ancho del contenedor de texto */
+    max-width: 100%; /* Asegura que el contenido no se desborde */
+    padding: 0 20px; /* Añade espaciado horizontal */
 }
 
 /* Títulos */
 .h1-details {
-    font-size: 2.5em;
+    font-size: 30px;
     color: #ff3f34; /* Color inspirado en Naruto */
     margin-bottom: 20px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Texto de detalles */
+/* Párrafos con detalles */
 .p-details {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #eee;
-}
-
-.strong-details {
-    color: #ff3f34; /* Color inspirado en Naruto */
-}
-
-p .strong-details {
-    font-weight: bold;
+    padding: 15px;
+    font-size: 30px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .p-details:hover {
     color: #f5c300;
     text-shadow: 0 0 10px #f5c300;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Mensaje de error */
@@ -786,7 +771,9 @@ p .strong-details {
 }
 
 /* Botón de detalles */
-.button-details {
+.button-details,
+#backToCharacters {
+    text-decoration: none;
     background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
     border: none;
     border-radius: 5px;
@@ -794,100 +781,51 @@ p .strong-details {
     color: white;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
-}
-.btn{
-    background-color:  #e97406;
-    border-color: black;
+    font-size: 25px;
+   /* Añade espacio encima del botón */
 }
 
-
-.body-details {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f5c300, #e67e22); /* Colores inspirados en Naruto */
-    color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Evita el scroll hacia abajo */
+.button-details:hover,
+#backToCharacters:hover {
+   
+    background: linear-gradient(135deg, #f5c300, #ff3f34);
+    transform: scale(1.1);
+    font-size: 22px; /* Ajusta el tamaño del texto en el hover */
 }
 
-#app-details {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 20px;
+/* Botón de volver */
+#backToCharacters {
+    margin-top: 20px;
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Estilos personalizados para la barra de desplazamiento */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #222; /* Color del fondo de la barra de desplazamiento */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    width: 90%;
-    max-width: 1000px; /* Ajusta el tamaño para el nuevo diseño */
-    text-align: left; /* Alineación a la izquierda para el texto */
-    display: flex; /* Utiliza flexbox para el diseño */
-    flex-direction: row; /* Coloca elementos en fila */
-    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
-}
-
-/* Imagen de detalles */
-.img-details {
-    max-width: 40%; /* Ajusta el ancho de la imagen */
-    border-radius: 8px;
-    margin-right: 20px; /* Espacio entre la imagen y el texto */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
-    animation: pulse 2s infinite;
-}
-
-/* Contenedor de información */
-.details-info {
-    max-width: 60%; /* Ajusta el ancho del contenedor de texto */
-}
-
-/* Títulos */
-.h1-details {
-    font-size: 2.5em;
-    color: #ff3f34; /* Color inspirado en Naruto */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Texto de detalles */
-.p-details {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #eee;
-}
-
-.strong-details {
-    color: #ff3f34; /* Color inspirado en Naruto */
-}
-
-p .strong-details {
-    font-weight: bold;
-}
-
-.p-details:hover {
-    color: #f5c300;
-    text-shadow: 0 0 10px #f5c300;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* Mensaje de error */
-#errorMessageee {
-    color: #f44336;
-    font-size: 1.2em;
-}
-
-/* Botón de detalles */
-.button-details {
-    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-.btn{
-    background-color:  #e97406;
-    border-color: black;
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -895,24 +833,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 
-.btn:hover {
-    color: black;
-    background-color:  #e97406;
-    border-color: black;
-}
-.btn{
-    height: 50px;
-    width: 100px;
-    background-color:  #e97406;
-    border-color: black;
-    font-size: 20px;
-}
-
-
-
-.tarjetas {
-    display: flex;
-    gap: 5%; 
-    flex-wrap: wrap; 
-    justify-content: center; 
+.boton{
+    padding: 30px;
 }

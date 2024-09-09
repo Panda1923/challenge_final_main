@@ -1,34 +1,4 @@
-// Componente Header
-Vue.component('header-component', {
-    template: `
-        <header>
-        <div class="nav-container">
-            <div class="menu-icon" id="menuIcon">
-                <img class="logo" src="../assets/naruto-removebg-preview.png" alt="Menu Icon">
-            </div>
-            <nav class="navbar navbar-expand-md navbar-light" id="navbar">
-                <a class="navbar-brand d-md-none" href="#home">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <nav id="navbar-nav" class="justify-content-center">
-                    <a href="../pages/index.html" class="nav-link">
-                    <img class="logo" src="../assets/HOME.png" alt="Home">
-                    </a>
-                    <a href="../pages/stats.html" class="nav-link">
-                    <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
-                    </a>
-                    <a href="../pages/store.html" class="nav-link">
-                    <img class="logo" src="../assets/STORE.png" alt="Store">
-                    </a>
-                </nav>
-                </div>
-            </nav>
-            </div>
-        </header>
-    `
-});
+
 Vue.component('character-details', {
     data() {
         return {
@@ -80,6 +50,7 @@ Vue.component('character-details', {
             <p class="p-details"><strong class="strong-details">Characters per clan:</strong> {{ clan.characters ? clan.characters.length : 0 }}</p>
             <p class="p-details"><strong class="strong-details">Name of the characters:</strong> {{ characterNames }}</p>
             <p class="p-details" v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
+             <a class="button-details" href="/naruto/pages/index.html" id="backToCharacters">Regresar a Personajes</a>
            
 
         </div>
