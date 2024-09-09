@@ -52,14 +52,13 @@ nav {
     display: flex;
     flex-direction: row;
     background-color: #e97406;
-  
     position: fixed;
     width: 0;
     top: 0;
     left: 0;
     height: 10vh;
     overflow: hidden;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.6s ease-in-out;
     z-index: 1001;
 }
 
@@ -90,6 +89,7 @@ nav a:hover {
 
 .nav-container:hover .menu-icon {
     left: calc(100% - 60px); 
+    opacity: 0;
 }
 
 .container {
@@ -184,9 +184,9 @@ h2 {
 /* Estilo para la cuadrícula de tarjetas */
 .flip-card {
     background-color: transparent;
-    width: 100%;
-    max-width: 100%; 
-    height: 350px; 
+    width: 400px;
+   
+    height: 600px; 
     perspective: 1000px;
 }
 
@@ -212,9 +212,11 @@ h2 {
 }
 
 .flip-card-front {
+    
     background-color: #bbb;
 }
 .flip-card-back {
+  
     color: white;
     transform: rotateY(180deg);
     display: flex;
@@ -226,6 +228,7 @@ h2 {
 
 
 .card-body {
+    justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -243,12 +246,14 @@ h2 {
 }
 
 .card-title {
-    font-size: 60px;
-    color: #f57f17;
+
+    padding: 5px;
+    font-size: 40px;
+    color: #030202;
 }
 
 .card-text {
-    font-size: 30px;
+    font-size: 25px;
     color:  #f57f17;
 }
 
@@ -604,7 +609,7 @@ img {
 }
 
 .footer-custom {
-    background-color: #333;
+    background-color: #e97406;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -617,6 +622,7 @@ img {
 
 .footer-description {
     margin: 10px 0;
+    font-size: 30px;
 }
 
 .footer-links {
@@ -637,7 +643,7 @@ img {
 }
 
 .footer-social-link img {
-    width: 100px;
+    width: 200px;
     height: 100px;
     vertical-align: middle;
     object-fit: contain;
@@ -679,8 +685,27 @@ img {
     border-color: black;
 }
 .btn{
+    height: 50px;
+    width: 100px;
     background-color:  #e97406;
     border-color: black;
+    font-size: 20px;
 }
 
 
+/* Contenedor de Tarjetas */
+.tarjetas {
+    display: flex;
+    gap: 7%; /* Espacio entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en una nueva línea si es necesario */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+}
+
+
+.card-container {
+    width: 400px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que el contenido no se desborde fuera de los bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra para mejorar la apariencia */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
