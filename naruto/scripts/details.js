@@ -79,7 +79,7 @@ Vue.component('character-details', {
                 <p class="p-details"><strong class="strong-details">Rango:</strong> {{ formatRank(character.rank) }}</p>
                 <p class="p-details"><strong class="strong-details">Debut:</strong> {{ formatDebut(character.debut) }}</p>
                 <p class="p-details"><strong class="strong-details">Jutsu:</strong> {{ formatJutsu(character.jutsu) }}</p>
-                <a class="button-details" href="/naruto/pages/index.html" id="backToCharacters">Regresar a Personajes</a>
+                <a class="button-details" href="./index.html" id="backToCharacters">Regresar a Personajes</a>
             </div>
             <p v-if="errorMessage">{{ errorMessage }}</p>
         </div>
