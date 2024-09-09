@@ -12,6 +12,7 @@
     <video src="../assets/naruto-8.mp4" autoplay muted loop type="video/mp4"></video>
     
     <div id="app" >
+      
         <!-- Formulario de Compra -->
         <div v-if="showPurchaseForm" class="card mx-auto  formulario-container form-container-custom" >
           <div class="card-body form-visible-custom">
@@ -39,11 +40,14 @@
       
         <!-- Mensaje de Confirmación -->
         <div v-if="submitted" class="confirmation-message text-center mt-1" >
-          <h2>Thank you for your purchase!</h2>
-          <p>Your order will be arriving in a few days.</p>
+          <h2>Please finish filling out this form</h2>
+          <p>Thank you for your visit</p>
           <a href="index.html" class="btn-buy-custom">Return to home</a>
           <a href="store.html" class="btn-buy-custom">Continue shopping</a>
         </div>
+        
+        
+
       </div>
       
       
@@ -52,5 +56,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../scripts/store.js"></script>
+    
 </body>
 </html>
