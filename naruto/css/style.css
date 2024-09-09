@@ -885,57 +885,9 @@ p .strong-details {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
-
-.button-details:hover {
-    background: linear-gradient(135deg, #f5c300, #ff3f34);
-    transform: scale(1.1);
-}
-
-/* Botón de volver */
-#backToCharacters {
-    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    margin-top: 20px;
-}
-
-#backToCharacters:hover {
-    background: linear-gradient(135deg, #f5c300, #ff3f34);
-    transform: scale(1.1);
-}
-
-/* Animación de pulso */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
-    }
-}
-
-/* Estilos personalizados para la barra de desplazamiento */
-body::-webkit-scrollbar {
-    width: 12px;
-}
-
-body::-webkit-scrollbar-track {
-    background: #222; /* Color del fondo de la barra de desplazamiento */
-}
-
-body::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
-    border-radius: 10px;
+.btn{
+    background-color:  #e97406;
+    border-color: black;
 }
 
 body::-webkit-scrollbar-thumb:hover {
