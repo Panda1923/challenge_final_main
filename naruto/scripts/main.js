@@ -186,8 +186,13 @@ Vue.component('characters-section', {
     formatJutsu(jutsu) {
       if (!jutsu || !jutsu.length) return 'No disponible';
       return jutsu.join(', ');
+    },
+
+    goToDetails(characterId) {
+      window.location.href = `../pages/details.html?id=${characterId}`;
     }
   },
+
 
   template: `
  <section class="character-section ">
@@ -218,7 +223,7 @@ Vue.component('characters-section', {
                  
               </div>
               <div class="d-flex justify-content-around align-items-center mt-2">
-                <button class="btn btn-info">Details</button>
+                <button class="btn btn-info"  @click="goToDetails(character.id)">Details</button>
                  <a href="store.html" class="btn btn-info">Buy</a>
               </div>
             </div>
