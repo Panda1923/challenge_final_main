@@ -225,7 +225,7 @@ Vue.component('characters-section', {
               <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
             </div>
             <div class="d-flex justify-content-around align-items-center mt-3">
-              <button class="btn btn-info">Details</button>
+              <button class="btn btn-info"  @click="goToDetails(character.id)">Details</button>
              
             </div>
           </div>
