@@ -225,7 +225,7 @@ Vue.component('characters-section', {
               <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
             </div>
             <div class="d-flex justify-content-around align-items-center mt-3">
-              <button class="btn btn-info">Details</button>
+              <button class="btn btn-info"  @click="goToDetails(character.id)">Details</button>
              
             </div>
           </div>
@@ -320,7 +320,7 @@ Vue.component('clans-section', {
               </p>
             </div>
             <div class="d-flex justify-content-around align-items-center mt-3">
-              <a :href="'/naruto/pages/stats.html'" class="btn btn-info">Details</a> <!-- Botón estilo Bootstrap -->
+               <button @click="goToDetails(character.name)" class="btn btn-info">Ver Detalles</button>
             </div>
           </div>
         </div>

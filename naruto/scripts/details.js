@@ -22,6 +22,9 @@ Vue.component('character-details', {
                         return response.json();
                     })
                     .then(data => {
+                        if (!data) {
+                            throw new Error('No se encontraron datos para este personaje.');
+                        }
                         this.character = data;
                     })
                     .catch(error => {
@@ -29,7 +32,8 @@ Vue.component('character-details', {
                         this.errorMessage = `No se pudo cargar la información del personaje: ${error.message}`;
                     });
             } else {
-                this.errorMessage = 'ID de personaje no proporcionado.';
+                console.error('ID de personaje no proporcionado.');
+                this.errorMessage = 'ID de personaje no proporcionado en la URL.';
             }
         },
 
@@ -68,16 +72,17 @@ Vue.component('character-details', {
     },
     template: `
         <div v-if="character">
-        <div>
-            <h1 class="h1-details">{{ character.name }}</h1>
-            <img class="img-details" :src="character.images[0]" alt="Imagen del personaje">
-            <p class="p-details"><strong class="strong-details">Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
-            <p class="p-details"><strong class="strong-details">Rango:</strong> {{ formatRank(character.rank) }}</p>
-            <p class="p-details"><strong class="strong-details">Debut:</strong> {{ formatDebut(character.debut) }}</p>
-            <p class="p-details"><strong class="strong-details">Jutsu:</strong> {{ formatJutsu(character.jutsu) }}</p>
-            <a class="button-details" href="./index.html" id="backToCharacters">Regresar a Personajes</a>
+            <div>
+                <h1 class="h1-details">{{ character.name }}</h1>
+                <img class="img-details" :src="character.images[0]" alt="Imagen del personaje">
+                <p class="p-details"><strong class="strong-details">Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
+                <p class="p-details"><strong class="strong-details">Rango:</strong> {{ formatRank(character.rank) }}</p>
+                <p class="p-details"><strong class="strong-details">Debut:</strong> {{ formatDebut(character.debut) }}</p>
+                <p class="p-details"><strong class="strong-details">Jutsu:</strong> {{ formatJutsu(character.jutsu) }}</p>
+                <a class="button-details" href="/naruto/pages/index.html" id="backToCharacters">Regresar a Personajes</a>
+            </div>
+            <p v-if="errorMessage">{{ errorMessage }}</p>
         </div>
-        <p v-if="errorMessage">{{ errorMessage }}</p>
     `
 });
 
