@@ -1,4 +1,3 @@
-
 #bodyhtml {
     font-family: fantasy;
     min-height: 100vh;
@@ -6,8 +5,6 @@
     overflow-x: hidden;
     margin: 0; 
 }
-
-
 
 .icon-cart {
     width: 40px;
@@ -26,12 +23,10 @@ video {
     z-index: -1; 
 }
 
-
 .nav-container {
     position: relative;
     z-index: 1002; 
 }
-
 
 .menu-icon {
     position: fixed;
@@ -41,26 +36,23 @@ video {
     transition: left 0.3s ease-in-out;
 }
 
-
 .menu-icon img {
    min-width: 100%;
     height: 80px;
     cursor: pointer;
 }
-h5{ color: #f57f17;
-   
+
+h5 { 
+    color: #f57f17;
 }
 
-
-
-nav{
-    
+nav {
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: row;
-    background-color:  #020144;
-    color: #f9a825;
+    background-color: #e97406;
+  
     position: fixed;
     width: 0;
     top: 0;
@@ -70,7 +62,6 @@ nav{
     transition: width 0.3s ease-in-out;
     z-index: 1001;
 }
-
 
 nav.open {
     width: 100%;
@@ -93,23 +84,19 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-
 .nav-container:hover nav {
     width: 100%;
 }
 
-
 .nav-container:hover .menu-icon {
     left: calc(100% - 60px); 
 }
-
 
 .container {
     padding: 60px 20px;
     z-index: 1; 
     position: relative;
 }
-
 
 .character-list {
     display: flex;
@@ -121,8 +108,6 @@ nav a:hover {
     min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
 }
 
-
-
 .character-item {
     overflow: hidden;
     width: calc(33% - 20px); /* Ajusta el tamaño de las tarjetas */
@@ -132,13 +117,10 @@ nav a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-
-
 .character-item:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
-
 
 .character-item img {
     max-width: 60%;
@@ -149,18 +131,18 @@ nav a:hover {
 .character-item h2 {
     font-size: 40px;
     margin: 10px 0;
-    color:#f57f17;
+    color: #f57f17;
 }
-
 
 .character-item p {
     font-size: 30px;
     color: #000000;
 }
 
-
-
-
+h2 {
+    color: #f57f17;
+    font-size: 40px;
+}
 
 .section-title {
     font-size: 2em;
@@ -170,23 +152,20 @@ nav a:hover {
     animation: fadeIn 2s;
 }
 
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 
 .carousel img {
     height: 50vh;
     width: 100%; 
     object-fit: contain; 
 }
-.input1-group {
 
+.input1-group {
     width: 30%;
 }
-
 
 .form-check {
     margin: 0 10px;
@@ -196,12 +175,12 @@ nav a:hover {
     max-width: 600px;
 }
 
-
-.character-section{
+.character-section {
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
+
 /* Estilo para la cuadrícula de tarjetas */
 .flip-card {
     background-color: transparent;
@@ -209,71 +188,87 @@ nav a:hover {
     max-width: 100%; 
     height: 350px; 
     perspective: 1000px;
-  }
-  
-  .flip-card-inner {
+}
+
+.flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-  }
-  
-  .flip-card:hover .flip-card-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-  }
-  
-  .flip-card-front, .flip-card-back {
+}
+
+.flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-  }
-  
-  .flip-card-front {
+}
+
+.flip-card-front {
     background-color: #bbb;
-  }
-  
-  .flip-card-back {
+}
+.flip-card-back {
     color: white;
     transform: rotateY(180deg);
-  }
-  
-  .card-img-top {
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* Ajusta el padding según sea necesario */
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
+    overflow: auto; /* Añade barras de desplazamiento si el contenido es más grande */
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+}
+
+.d-flex {
+    margin-top: auto; /* Asegura que los botones se mantengan en la parte inferior */
+}
+
+.card-img-top {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
+}
+
+.card-title {
+    font-size: 60px;
     color: #f57f17;
-  }
-  
-  .card-text {
-    font-size: 0.875rem;
-    color: #000000;
-  }
-  
-  /* General Resets */
-  * {
+}
+
+.card-text {
+    font-size: 30px;
+    color:  #f57f17;
+}
+
+/* General Resets */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     margin: 100px auto;
     font-family: 'Lato', sans-serif;
     color: #333;
     background-color: #f4f4f4;
-  }
-  
+}
 
 img {
     max-width: 100%;
 }
-
 
 /* Icono del Carrito */
 .icon-cart-custom {
@@ -299,9 +294,9 @@ img {
     position: sticky; /* Hace que el contenedor sea pegajoso */
     top: 100px; /* Ajusta la distancia desde la parte superior */
     left: 100%;
-    width: 60px; /* Tamaño del contenedor */
-    height: 60px; /* Tamaño del contenedor */
-    background-color: #000; /* Fondo negro */
+    width: 100px; /* Tamaño del contenedor */
+    height: 100px; /* Tamaño del contenedor */
+    background-color: #f57f17; /* Fondo negro */
     border-radius: 50%; /* Hace que el fondo sea circular */
     display: flex;
     justify-content: center;
@@ -309,6 +304,7 @@ img {
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para mejor visibilidad */
 }
+
 .count-products-custom {
     position: absolute;
     top: 0;
@@ -362,7 +358,7 @@ img {
     background: none;
     border: none;
     font-size: 24px;
-    color: #333;
+    color: #e97406;
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -390,6 +386,16 @@ img {
 .close-modal-custom {
     cursor: pointer;
 }
+
+.card-body {
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
 
 /* Contenedor de Productos en el Carrito */
 .cart-row-product-custom {
@@ -486,15 +492,18 @@ img {
 /* Contenedor de Ítems de la Tienda */
 .container-items-custom {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Añade espacio alrededor del contenedor */
+    margin: 0 20px; /* Añade margen de 20px en los lados izquierdo y derecho */
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
 }
 
 .item-custom {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    background-color: #fff; /* Fondo blanco sólido para las tarjetas */
+    background-color: transparent; /* Fondo blanco sólido para las tarjetas */
     transition: transform 0.5s, box-shadow 0.5s;
     margin: 0; /* Elimina márgenes dentro de cada tarjeta */
 }
@@ -506,32 +515,37 @@ img {
 .item-custom img {
     width: 100%;
     height: 300px;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s;
 }
 
 .item-custom:hover img {
     transform: scale(1.2);
 }
+
 .info-product-custom {
     padding: 15px 30px;
     line-height: 2;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
 }
 
 .price-custom {
-    font-size: 18px;
+    color: #f57f17;
+    font-size: 30px;
     font-weight: 900;
 }
 
 .info-product-custom button {
+    font-size: 30px;
     border: none;
-    background-color: #000;
-    color: #fff;
+    background-color: #e97406;
+    color: #050404;
     padding: 15px 10px;
     cursor: pointer;
+    width: 100%;
 }
 
 /* Mensajes y Elementos Ocultos */
@@ -543,28 +557,16 @@ img {
 .cart-empty-message-custom {
     text-align: center;
     font-size: 18px;
-    color: #666;
+    color: #e97406;
     padding: 20px 0;
 }
 
-.container-items-custom {
-    display: grid; /* Usa grid para manejar el layout */
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Añade espacio alrededor del contenedor */
-    margin: 0 20px; /* Añade margen de 20px en los lados izquierdo y derecho */
-    
-    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
-}
-
-/* Estilo para el formulario */
 .form-container-custom {
     width: 100%;
     max-width: 500px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .formulario-container {
     max-width: 400px;
@@ -588,7 +590,6 @@ img {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.8s ease;
-    ;
 }
 
 @keyframes fadeIn {
@@ -622,21 +623,17 @@ img {
     margin-bottom: 10px;
 }
 
-
-
 .footer-link:hover {
     text-decoration: underline;
 }
 
 .footer-social {
     margin-top: 25px;
-    
 }
 
 .footer-social-link {
     margin: 0 5px;
     display: inline-block;
-    
 }
 
 .footer-social-link img {
@@ -644,34 +641,46 @@ img {
     height: 100px;
     vertical-align: middle;
     object-fit: contain;
-    ;
 }
-.footer-social-link1 img{
+
+.footer-social-link1 img {
     width: 20px;
     height: 20px;
     vertical-align: middle;
     margin-right: 6px;
-  
-} 
+}
 
-/*Opaca un poco la tabla de stats para darle estilo*/
+/* Opaca un poco la tabla de stats para darle estilo */
 .table-stats {
     opacity: 0.8;
 }
 
-/* Estilo para el body de la página stats con fondo transparente*/
-.body-stats{
+/* Estilo para el body de la página stats con fondo transparente */
+.body-stats {
     background-color: transparent !important;
 }
 
-/* Estilo para que el titulo "imagen" tenga un tamaño fijo*/
-.img-titulo-stats{
+/* Estilo para que el titulo "imagen" tenga un tamaño fijo */
+.img-titulo-stats {
     max-height: 800px;
     max-width: auto;
 }
 
 /* Estilo para que la imagen del titulo tenga un tamaño */
-.img-stats-naruto{
+.img-stats-naruto {
     max-height: 350px;
     max-width: auto;
 }
+
+
+.btn:hover {
+    color: black;
+    background-color:  #e97406;
+    border-color: black;
+}
+.btn{
+    background-color:  #e97406;
+    border-color: black;
+}
+
+

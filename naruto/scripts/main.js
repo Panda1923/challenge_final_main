@@ -14,7 +14,8 @@ Vue.component('header-component', {
           <div class="collapse navbar-collapse" id="navbarNav">
             <nav id="navbar-nav" class="justify-content-center">
               <a href="../pages/index.html" class="nav-link">
-                <img class="logo" src="../assets/HOME (1).png" alt="Home">
+                <img class="logo" src="../assets/HOME.png" alt="Home">
+                
               </a>
               <a href="../pages/stats.html" class="nav-link">
                 <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
@@ -75,17 +76,18 @@ Vue.component('main-component', {
       </div>
 
              <div class="container mt-4" id="characters">
-            <h2 class="section-title">Personajes</h2>
+            <h2 class="section-title"><img src="../assets/personajes principales.png" alt=""></h2>
             <div class="character-list">
-                <div class="character-item">
-                    <img src="../assets/pngegg (4).png" alt="Naruto Uzumaki">
-                    <h2>Naruto Uzumaki</h2>
-                    <p>El protagonista principal de la serie.</p>
-                </div>
+               
                 <div class="character-item">
                     <img src="../assets/pngegg (5).png" alt="Sakura Haruno">
                     <h2>Sakura Haruno</h2>
                     <p>Compañera de equipo de Naruto y Sasuke, experta en ninjutsu médico.</p>
+                </div>
+                 <div class="character-item">
+                    <img src="../assets/pngegg (4).png" alt="Naruto Uzumaki">
+                    <h2>Naruto Uzumaki</h2>
+                    <p> Naruto Uzumaki es un niño marginado en la aldea ninja en la que vive. En su interior reside el poder de una bestia que estuvo al borde de destruir el pueblo años atrás.</p>
                 </div>
                 <div class="character-item">
                     <img src="../assets/pngwing.com (8).png" alt="Sasuke Uchiha">
@@ -189,7 +191,7 @@ Vue.component('characters-section', {
 
   template: `
  <section class="character-section ">
-  <h2 class="text-center mb-4">Personajes de Naruto</h2>
+  <h2 class="text-center mb-4"><img src="../assets/todos los personajes.png" alt=""></h2>
   <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
   <div class="tarjetas">
     <div class="row">
@@ -213,7 +215,7 @@ Vue.component('characters-section', {
                 <h5 class="card-title">{{ character.name }}</h5>
                 <p class="card-text"><strong>Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
                 <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
-                 <p class="card-text"><strong>Debut:</strong> {{ formatDebut(character.debut) }}</p>
+                 
               </div>
               <div class="d-flex justify-content-around align-items-center mt-2">
                 <button class="btn btn-info">Details</button>
