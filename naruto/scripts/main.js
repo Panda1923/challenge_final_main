@@ -279,15 +279,6 @@ Vue.component('clans-section', {
         <div class="flip-card-inner">
           <!-- Lado frontal de la tarjeta -->
           <div class="flip-card-front">
-=========
-    <h2 class="text-center mb-4">Clanes de Naruto</h2>
-    <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-    <div class="tarjetas">
-      <div class="row">
-        <div v-for="clan in clans" :key="clan.id" class="col-md-4 mb-4">
-          <div class="card shadow-sm rounded h-100"> 
-            <!-- Parte frontal de la tarjeta -->
->>>>>>>>> Temporary merge branch 2
             <img 
               v-if="clan.image" 
               :src="clan.image" 
