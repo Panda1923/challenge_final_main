@@ -19,12 +19,35 @@
 
         <!-- Barra de Navegación y contenido principal -->
         <main-component></main-component>
-
+        <div class="text-center my-4">
+            <div class="character-item" style="display: inline-block; width: 500px;" @click="showCharacters = true; showClans = false; showAll = false">
+              <img src="/naruto/assets/pngegg (5).png" class="card-img-top" alt="characters">
+              <div class="card-body">
+                <h5 class="card-title">characters</h5>
+              </div>
+            </div>
+            <div class="character-item" style="display: inline-block; width: 500px;" @click="showAll = true; showCharacters = false; showClans = false">
+                <img src="/naruto/assets/pngegg (4).png" class="card-img-top" alt="all">
+                <div class="card-body">
+                  <h5 class="card-title">all</h5>
+                </div>
+              </div>
+            <div class="character-item" style="display: inline-block; width: 500px;" @click="showClans = true; showCharacters = false; showAll = false">
+              <img src="/naruto/assets/pngwing.com (8).png" class="card-img-top" alt="Clanes">
+              <div class="card-body">
+                <h5 class="card-title">Clanes</h5>
+              </div>
+            </div>
+          </div>
+          
+          
         <!-- Sección de Personajes -->
-        <characters-section></characters-section>
-   
-        <clans-section></clans-section>
-    
+        <characters-section v-if="showCharacters || showAll"></characters-section>
+        <div class="row">
+          <div v-for="character in filteredCharacters" :key="character.id" class="col-md-3 mb-4">
+            </div>
+        </div>
+        <clans-section v-if="showClans || showAll"></clans-section>
         <!-- Footer -->
         <footer-component></footer-component>
     </div>
