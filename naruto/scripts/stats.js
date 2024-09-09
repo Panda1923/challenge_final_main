@@ -14,7 +14,7 @@ Vue.component('header-component', {
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <nav id="navbar-nav" class="justify-content-center">
                     <a href="../pages/index.html" class="nav-link">
-                    <img class="logo" src="../assets/HOME (1).png" alt="Home">
+                    <img class="logo" src="../assets/HOME.png" alt="Home">
                     </a>
                     <a href="../pages/stats.html" class="nav-link">
                     <img class="logo2" src="../assets/STATS.png" alt="Clanes y Técnicas">
