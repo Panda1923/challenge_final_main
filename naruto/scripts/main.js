@@ -242,7 +242,7 @@ Vue.component('clans-section', {
   template: `
   <section class="character-section">
   <h2 class="text-center mb-4">
-   <img src="../assets/clans.png" alt="">
+   <img src="../assets/clanes.png" alt="">
   </h2>
   <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
   <div class="tarjetas">
@@ -284,13 +284,35 @@ Vue.component('clans-section', {
 </section>
 `
 });
-
+// Componente Footer
+Vue.component('footer-component', {
+  template: `
+      <div class="footer-content footer-custom">
+          <div class="footer-logo">
+              <img src="../assets/naruto-removebg-preview.png" alt="Naruto Logo" />
+          </div>
+          <p class="footer-description">&copy; 2024 Naruto Fan Page. All rights reserved.</p>
+          
+          <div class="footer-social ">
+              <a href="https://twitter.com/tuusuario" target="_blank" class="footer-social-link1">
+                  <img src="../assets/x.png" alt="Twitter" />
+              </a>
+              <a href="https://facebook.com/tuusuario" target="_blank" class="footer-social-link">
+                  <img src="../assets/facebook.png" alt="Facebook" />
+              </a>
+              <a href="https://crunchyroll.com/tuusuario" target="_blank" class="footer-social-link">
+                  <img src="../assets/crunchyroll.png" alt="Crunchyroll" />
+              </a>
+          </div>
+      </div>
+  `
+});
 
 // Inicializar Vue
 new Vue({
   el: '#app',
   data: {
-    showCharacters: false,  // Mostrar personajes por defecto
+    showCharacters: true,  // Mostrar personajes por defecto
     showClans: false,
   },
   mounted() {
