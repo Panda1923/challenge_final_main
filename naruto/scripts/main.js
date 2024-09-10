@@ -90,6 +90,8 @@ Vue.component('characters-section', {
       errorMessage: null, // Para manejar errores
       currentPage: 1, // Página actual
       totalPages: null, // Total de páginas
+      idsSinImagen: new Set([854, 143, 649, 909, 63, 515, 222, 148, 162, 870, 25, 120, 158, 1143, 546, 1104, 266, 531, 851, 1279, 224, 628, 845]), // Ids sin imágenes
+      imagenPredeterminada: '../assets/4fba09dde681e2db50ea2d2d57bbee90.jpg' // Ruta de la imagen predeterminada
     };
   },
   mounted() {
@@ -170,6 +172,17 @@ Vue.component('characters-section', {
 
     goToDetails(characterId) {
       window.location.href = `../pages/details.html?id=${characterId}`;
+    },
+
+    // Método para obtener la URL de la imagen
+    getImageSrc(character) {
+      if (this.idsSinImagen.has(character.id)) {
+        return this.imagenPredeterminada;
+      } else if (character.images && character.images.length) {
+        return character.images[0];
+      } else {
+        return this.imagenPredeterminada; // En caso de que no haya imágenes y el ID no esté en idsSinImagen
+      }
     }
   },
 
@@ -187,15 +200,9 @@ Vue.component('characters-section', {
           <!-- Lado frontal de la tarjeta -->
           <div class="flip-card-front">
             <img 
-              v-if="character.images && character.images.length" 
-              :src="character.images[0]" 
+              :src="getImageSrc(character)" 
               class="card-img-top" 
               :alt="character.name">
-            <img 
-              v-else 
-              src="/naruto/assets/4fba09dde681e2db50ea2d2d57bbee90.jpg" 
-              class="card-img-top" 
-              alt="Imagen predeterminada">
           </div>
           <!-- Lado posterior de la tarjeta -->
           <div class="flip-card-back">
@@ -205,8 +212,7 @@ Vue.component('characters-section', {
               <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
             </div>
             <div class="d-flex justify-content-around align-items-center mt-3">
-              <button class="btn btn-info"  @click="goToDetails(character.id)">Details</button>
-             
+              <button class="btn btn-info" @click="goToDetails(character.id)">Details</button>
             </div>
           </div>
         </div>
@@ -214,7 +220,6 @@ Vue.component('characters-section', {
     </div>
   </div>
 </section>
-
 `
 });
 
