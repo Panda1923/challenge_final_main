@@ -137,9 +137,6 @@ Vue.component('characters-section', {
   
   template: `
 <section class="character-section">
-  <h2 class="text-center mb-4">
-    <img src="../assets/todos los personajes.png" alt="Todos los personajes">
-  </h2>
   <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
   <div class="tarjetas">
     <div v-for="character in characters" :key="character.id" class="card-container col-md-3 mb-4">
