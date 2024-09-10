@@ -84,17 +84,25 @@
         </div>
 
         <div class="container-items-custom">
-            <div v-for="item in items" :key="item.title" class="item-custom">
-                <figure>
-                    <img :src="item.imgSrc" :alt="item.title"/>
-                </figure>
-                <div class="info-product-custom">
-                    <h2>{{ item.title }}</h2>
-                    <p class="price-custom">$ {{ item.price }}</p>
-                    <button @click="addToCart(item)" class="btn-add-card-custom">Add to Cart</button>
-                </div>
+            <div v-for="item in items" :key="item.id" class="item-custom">
+              <figure>
+                <img :src="item.imgSrc" :alt="item.title"/>
+              </figure>
+              <div class="info-product-custom">
+                <h2>{{ item.title }}</h2>
+                <p class="price-custom">$ {{ item.price }} USD</p>
+                
+                <!-- Mostrar botones dependiendo del estado de isAdded -->
+                <button v-if="!item.isAdded" @click="addToCart(item)" class="btn-add-card-custom">
+                  Add to cart
+                </button>
+                <button v-else @click="toggleCart()" class="btn-add-card-custom">
+                    Go to cart
+                </button>
+              </div>
             </div>
-        </div>
+          </div>
+          
         
 <footer>
 
