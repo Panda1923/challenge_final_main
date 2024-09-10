@@ -13,7 +13,7 @@ Vue.component('header-component', {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <nav id="navbar-nav" class="justify-content-center">
-              <a href="../pages/index.html" class="nav-link">
+              <a href="/naruto/pages/Home.html" class="nav-link">
                 <img class="logo" src="../assets/HOME.png" alt="Home">
                 
               </a>
@@ -22,6 +22,8 @@ Vue.component('header-component', {
               </a>
               <a href="../pages/store.html" class="nav-link">
                 <img class="logo" src="../assets/STORE.png" alt="Store">
+                  <a href="/naruto/pages/clans.html" class="nav-link">
+                <img class="logo" src="clan" alt="Store">
               </a>
             </nav>
           </div>
@@ -85,16 +87,28 @@ Vue.component('main-component', {
 Vue.component('characters-section', {
   data() {
     return {
-      characters: [], // Almacenará todos los personajes
+      characters: [], // Almacena todos los personajes
       characterIds: new Set(), // Almacena los IDs de personajes para evitar duplicados
       errorMessage: null, // Para manejar errores
       currentPage: 1, // Página actual
       totalPages: null, // Total de páginas
+      searchQuery: '', // Para la búsqueda
     };
   },
   mounted() {
     // Iniciar la carga de personajes desde la API
     this.loadCharacters();
+  },
+  computed: {
+    // Filtrar personajes basados en la búsqueda
+    filteredCharacters() {
+      if (this.searchQuery.trim() === '') {
+        return this.characters; // Si no hay búsqueda, mostrar todos los personajes
+      }
+      return this.characters.filter(character => 
+        character.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   },
   methods: {
     // Método para cargar los personajes con paginación
@@ -107,7 +121,7 @@ Vue.component('characters-section', {
         .then(data => {
           console.log(data); // Verificar la estructura de los datos en consola
           const newCharacters = data.characters || [];
-          
+
           // Filtrar personajes duplicados
           const filteredCharacters = newCharacters.filter(character => {
             if (this.characterIds.has(character.id)) {
@@ -151,72 +165,64 @@ Vue.component('characters-section', {
       return rankText;
     },
 
-    formatDebut(debut) {
-      if (!debut) return 'No disponible';
-      return `
-        Manga: ${debut.manga || 'No disponible'}
-        Anime: ${debut.anime || 'No disponible'}
-        Novel: ${debut.novel || 'No disponible'}
-        Movie: ${debut.movie || 'No disponible'}
-        Game: ${debut.game || 'No disponible'}
-        Ova: ${debut.ova || 'No disponible'}
-      `;
-    },
-
-    formatJutsu(jutsu) {
-      if (!jutsu || !jutsu.length) return 'No disponible';
-      return jutsu.join(', ');
-    },
-
     goToDetails(characterId) {
       window.location.href = `../pages/details.html?id=${characterId}`;
     }
   },
-
-
+  
   template: `
-<section class="character-section">
-  <h2 class="text-center mb-4">
-    <img src="../assets/todos los personajes.png" alt="Todos los personajes">
-  </h2>
-  <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-  <div class="tarjetas">
-    <div v-for="character in characters" :key="character.id" class="card-container col-md-3 mb-4">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <!-- Lado frontal de la tarjeta -->
-          <div class="flip-card-front">
-            <img 
-              v-if="character.images && character.images.length" 
-              :src="character.images[0]" 
-              class="card-img-top" 
-              :alt="character.name">
-            <img 
-              v-else 
-              src="/naruto/assets/4fba09dde681e2db50ea2d2d57bbee90.jpg" 
-              class="card-img-top" 
-              alt="Imagen predeterminada">
-          </div>
-          <!-- Lado posterior de la tarjeta -->
-          <div class="flip-card-back">
-            <div class="card-body p-4">
-              <h5 class="card-title">{{ character.name }}</h5>
-              <p class="card-text"><strong>Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
-              <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
+  <section class="character-section">
+    <h2 class="text-center mb-4">
+      <img src="../assets/todos los personajes.png" alt="Todos los personajes">
+    </h2>
+
+    <!-- Campo de búsqueda -->
+    <div class="text-center mb-4">
+      <input v-model="searchQuery" type="text" placeholder="Buscar personajes..." class="form-control" style="width: 50%; margin: 0 auto;">
+    </div>
+
+    <!-- Mensaje de error en caso de no encontrar resultados -->
+    <div v-if="filteredCharacters.length === 0" class="text-danger text-center">
+      No se encontraron personajes con ese nombre.
+    </div>
+
+    <!-- Tarjetas de los personajes -->
+    <div class="tarjetas">
+      <div v-for="character in filteredCharacters" :key="character.id" class="card-container col-md-3 mb-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Lado frontal de la tarjeta -->
+            <div class="flip-card-front">
+              <img 
+                v-if="character.images && character.images.length" 
+                :src="character.images[0]" 
+                class="card-img-top" 
+                :alt="character.name">
+              <img 
+                v-else 
+                src="/naruto/assets/4fba09dde681e2db50ea 2d2d57bbee90.jpg" 
+                class="card-img-top" 
+                alt="Imagen predeterminada">
             </div>
-            <div class="d-flex justify-content-around align-items-center mt-3">
-              <button class="btn btn-info"  @click="goToDetails(character.id)">Details</button>
-             
+            <!-- Lado posterior de la tarjeta -->
+            <div class="flip-card-back">
+              <div class="card-body p-4">
+                <h5 class="card-title">{{ character.name }}</h5>
+                <p class="card-text"><strong>Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
+                <p class="card-text"><strong>Rango:</strong> {{ formatRank(character.rank) }}</p>
+              </div>
+              <div class="d-flex justify-content-around align-items-center mt-3">
+                <button class="btn btn-info" @click="goToDetails(character.id)">Details</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-`
+  </section>
+  `
 });
+
 
 Vue.component('clans-section', {
   data() {
@@ -224,13 +230,24 @@ Vue.component('clans-section', {
       clans: [], // Almacena todos los clanes
       errorMessage: null, // Para manejar errores
       currentPage: 1, // Página actual
-      totalPages: 0 // Total de páginas a cargar
+      totalPages: 0, // Total de páginas a cargar
+      searchQuery: '', // Texto de búsqueda
     };
   },
   mounted() {
     this.loadClans(); // Cargar los clanes cuando el componente se monte
   },
-  
+  computed: {
+    // Filtrar clanes basados en la búsqueda
+    filteredClans() {
+      if (this.searchQuery.trim() === '') {
+        return this.clans; // Muestra todos los clanes si no hay búsqueda
+      }
+      return this.clans.filter(clan => 
+        clan.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
   methods: {
     // Método para cargar los clanes
     loadClans() {
@@ -268,85 +285,68 @@ Vue.component('clans-section', {
   },
   template: `
   <section class="character-section">
-<<<<<<<<< Temporary merge branch 1
-  <h2 class="text-center mb-4">
-   <img src="../assets/clans.png" alt="">
-  </h2>
-  <p v-if="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-  <div class="tarjetas">
-    <div v-for="clan in clans" :key="clan.id" class="card-container col-md-4 mb-4">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <!-- Lado frontal de la tarjeta -->
-          <div class="flip-card-front">
-            <img 
-              v-if="clan.image" 
-              :src="clan.image" 
-              class="card-img-top" 
-              :alt="clan.name">
-            <img 
-              v-else 
-              src="../assets/clan-naruto_3htx.jpg" 
-              class="card-img-top" 
-              alt="Imagen predeterminada">
-          </div>
-          <!-- Lado posterior de la tarjeta -->
-          <div class="flip-card-back">
-            <div class="card-body p-4">
-              <h5 class="card-title text-center text-uppercase">{{ clan.name }}</h5>
-              <p class="card-text"><strong>Personajes:</strong> 
-                <span v-if="clan.characters && clan.characters.length > 0">
-                  {{ clan.characters.map(character => character.name).join(', ') }}
-                </span>
-                <span v-else>No hay personajes asociados.</span>
-              </p>
+    <h2 class="text-center mb-4">
+      <img src="../assets/clans.png" alt="">
+    </h2>
+    
+    <!-- Campo de búsqueda -->
+    <div class="text-center mb-4">
+      <input v-model="searchQuery" type="text" placeholder="Buscar clanes..." class="form-control" style="width: 50%; margin: 0 auto;">
+    </div>
+
+    <!-- Mensaje de error en caso de no encontrar resultados -->
+    <div v-if="filteredClans.length === 0" class="text-danger text-center">
+      No se encontraron clanes con ese nombre.
+    </div>
+
+    <!-- Tarjetas de los clanes -->
+    <div class="tarjetas">
+      <div v-for="clan in filteredClans" :key="clan.id" class="card-container col-md-4 mb-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Lado frontal de la tarjeta -->
+            <div class="flip-card-front">
+              <img 
+                v-if="clan.image" 
+                :src="clan.image" 
+                class="card-img-top" 
+                :alt="clan.name">
+              <img 
+                v-else 
+                src="../assets/clan-naruto_3htx.jpg" 
+                class="card-img-top" 
+                alt="Imagen predeterminada">
             </div>
-            <div class="d-flex justify-content-around align-items-center mt-3">
-                <a :href="'./detailsclan.html?name=' + clan.name" class="btn btn-info">Details</a>
+            <!-- Lado posterior de la tarjeta -->
+            <div class="flip-card-back">
+              <div class="card-body p-4">
+                <h5 class="card-title text-center text-uppercase">{{ clan.name }}</h5>
+                <p class="card-text"><strong>Personajes:</strong> 
+                  <span v-if="clan.characters && clan.characters.length > 0">
+                    {{ clan.characters.map(character => character.name).join(', ') }}
+                  </span>
+                  <span v-else>No hay personajes asociados.</span>
+                </p>
+              </div>
+              <div class="d-flex justify-content-around align-items-center mt-3">
+                  <a :href="'./detailsclan.html?name=' + clan.name" class="btn btn-info">Details</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-`
-});
-
-
-// Componente Footer
-Vue.component('footer-component', {
-  template: `
-    
-    <div class="footer-content footer-custom">
-    <div class="footer-logo">
-        <img src="../assets/naruto-removebg-preview.png" alt="Naruto Logo" />
-    </div>
-    <p class="footer-description">&copy; 2024 Naruto Fan Page. All rights reserved.</p>
-   
-    <div class="footer-social ">
-        <a href="https://twitter.com/tuusuario" target="_blank" class="footer-social-link1">
-            <img src="../assets/x.png" alt="Twitter" />
-        </a>
-        <a href="https://facebook.com/tuusuario" target="_blank" class="footer-social-link">
-            <img src="../assets/facebook.png" alt="Facebook" />
-        </a>
-        <a href="https://crunchyroll.com/tuusuario" target="_blank" class="footer-social-link">
-            <img src="../assets/crunchyroll.png" alt="Crunchyroll" />
-        </a>
-    </div>
-</div>
-
+  </section>
   `
 });
+
 
 // Inicializar Vue
 new Vue({
   el: '#app',
   data: {
-    showAll: true,         // Mostrar todo inicialmente
     showCharacters: false,  // Mostrar personajes por defecto
-    showClans: false       // No mostrar clanes por defecto
+    showClans: false,
   },
   mounted() {
     this.efectoSonidoNavbar(); // Ejecutar el método cuando el componente esté montado
