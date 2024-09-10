@@ -4,23 +4,23 @@ new Vue({
     data() {
       return {
         items: [
-          { id: 1, title: "Minato Figure", price: 50, imgSrc: "../assets/D_NQ_NP_767868-MCO43594941779_092020-O.webp" },
-          { id: 2, title: "Kakashi Figure", price: 50, imgSrc: "../assets/sg-11134201-7rdyb-lxuh5b8rnu4o1f_tn.webp" },
-          { id: 3, title: "Itachi Figure", price: 50, imgSrc: "../assets/images (1).jpg" },
-          { id: 4, title: "Sasuke Figure", price: 90, imgSrc: "../assets/descarga (1).jpg" },
-          { id: 5, title: "Naruto Figure", price: 80, imgSrc: "../assets/descarga (2).jpg" },
-          { id: 6, title: "Naruto Figure", price: 100, imgSrc: "../assets/descarga.jpg" },
-          { id: 7, title: "Deidara Figure", price: 50, imgSrc: "../assets/figura-deidara-vibration-star-naruto-shippuden-13cm-p8804560i187800250.jpg" },
-          { id: 8, title: "Manga Volume 1", price: 50, imgSrc: "../assets/Volumen_1_HD.webp" },
-          { id: 9, title: "Manga Volume 2", price: 50, imgSrc: "../assets/Volumen_2_HD.webp" },
-          { id: 10, title: "Manga Volume 3", price: 50, imgSrc: "../assets/Volumen_3_HD.webp" },
-          { id: 11, title: "Manga Volume 4", price: 50, imgSrc: "../assets/Volumen_4_HD.webp" },
-          { id: 12, title: "Manga Volume 5", price: 50, imgSrc: "../assets/Volumen_5_HD.webp" },
-          { id: 13, title: "Itachi Keychain", price: 50, imgSrc: "../assets/images (2).jpg" },
-          { id: 14, title: "Jiraiya Figure", price: 50, imgSrc: "../assets/LlaveroNarutoJiraiya-scaled.jpg" },
-          { id: 15, title: "Sasuke Keychain", price: 50, imgSrc: "../assets/LlaveroNarutoSazuke.jpg" },
-          { id: 16, title: "Kakashi Keychain", price: 50, imgSrc: "../assets/w=1500,h=1500,fit=pad.avif" },
-          { id: 17, title: "Ninja Keychain", price: 50, imgSrc: "../assets/1645238470086.jpg" }
+          { id: 1, title: "Minato Figure", price: 50, imgSrc: "../assets/D_NQ_NP_767868-MCO43594941779_092020-O.webp", isAdded: false },
+          { id: 2, title: "Kakashi Figure", price: 50, imgSrc: "../assets/sg-11134201-7rdyb-lxuh5b8rnu4o1f_tn.webp", isAdded: false },
+          { id: 3, title: "Itachi Figure", price: 50, imgSrc: "../assets/images (1).jpg", isAdded: false },
+          { id: 4, title: "Sasuke Figure", price: 90, imgSrc: "../assets/descarga (1).jpg", isAdded: false },
+          { id: 5, title: "Naruto Figure", price: 80, imgSrc: "../assets/descarga (2).jpg", isAdded: false },
+          { id: 6, title: "Naruto Figure", price: 100, imgSrc: "../assets/descarga.jpg", isAdded: false },
+          { id: 7, title: "Deidara Figure", price: 50, imgSrc: "../assets/figura-deidara-vibration-star-naruto-shippuden-13cm-p8804560i187800250.jpg", isAdded: false },
+          { id: 8, title: "Manga Volume 1", price: 50, imgSrc: "../assets/Volumen_1_HD.webp", isAdded: false },
+          { id: 9, title: "Manga Volume 2", price: 50, imgSrc: "../assets/Volumen_2_HD.webp", isAdded: false },
+          { id: 10, title: "Manga Volume 3", price: 50, imgSrc: "../assets/Volumen_3_HD.webp", isAdded: false },
+          { id: 11, title: "Manga Volume 4", price: 50, imgSrc: "../assets/Volumen_4_HD.webp", isAdded: false },
+          { id: 12, title: "Manga Volume 5", price: 50, imgSrc: "../assets/Volumen_5_HD.webp", isAdded: false },
+          { id: 13, title: "Itachi Keychain", price: 50, imgSrc: "../assets/images (2).jpg", isAdded: false },
+          { id: 14, title: "Jiraiya Figure", price: 50, imgSrc: "../assets/LlaveroNarutoJiraiya-scaled.jpg", isAdded: false },
+          { id: 15, title: "Sasuke Keychain", price: 50, imgSrc: "../assets/LlaveroNarutoSazuke.jpg", isAdded: false },
+          { id: 16, title: "Kakashi Keychain", price: 50, imgSrc: "../assets/w=1500,h=1500,fit=pad.avif", isAdded: false },
+          { id: 17, title: "Ninja Keychain", price: 50, imgSrc: "../assets/1645238470086.jpg", isAdded: false }
         ],
         cart: [],
         isCartVisible: false,
@@ -53,6 +53,7 @@ new Vue({
         } else {
           this.cart.push({ ...item, quantity: 1, id: Date.now() });
         }
+        item.isAdded = true; // Marcar como añadido
         this.saveCart();
       },
       increaseQuantity(product) {
@@ -68,7 +69,15 @@ new Vue({
         this.saveCart();
       },
       removeProduct(product) {
+        // Filtrar el producto del carrito
         this.cart = this.cart.filter(p => p.id !== product.id);
+      
+        // Restablecer el estado de isAdded a false en el producto original (en el array items)
+        const originalProduct = this.items.find(item => item.title === product.title);
+        if (originalProduct) {
+          originalProduct.isAdded = false;
+        }
+      
         this.saveCart();
       },
       showPurchaseForm() {
