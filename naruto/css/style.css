@@ -732,7 +732,7 @@ img {
 .btn{
     height: 50px;
     width: 100px;
-    background-color:  #e97406;
+    background-color:  #e974061e;
     border-color: black;
     font-size: 20px;
 }
@@ -1815,3 +1815,9 @@ img {
 .img-transparent {
     opacity: 0.6;
 } 
+.modal-body {
+    font-size: 40px;
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--bs-modal-padding);
+}
