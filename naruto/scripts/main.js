@@ -26,7 +26,7 @@ Vue.component('header-component', {
               <a href="../pages/store.html" class="nav-link">
                 <img class="logo" src="../assets/STORE.png" alt="Store">
                   <a href="/naruto/pages/clans.html" class="nav-link">
-                <img class="logo" src="clan" alt="Store">
+                <img class="logo" src="clan" alt="">
               </a>
             </nav>
           </div>

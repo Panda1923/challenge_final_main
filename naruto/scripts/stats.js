@@ -16,7 +16,7 @@ Vue.component('header-component', {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <nav id="navbar-nav" class="justify-content-center">
-                    <a href="../pages/index.html" class="nav-link">
+                     <a href="/naruto/pages/Home.html" class="nav-link">
                     <img class="logo" src="../assets/HOME.png" alt="Home">
                     </a>
                     <a href="../pages/stats.html" class="nav-link">
