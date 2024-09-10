@@ -185,32 +185,32 @@ Vue.component('stats-component', {
         });
     }
 },    
-    template: `
-    <body class="d-flex flex-column min-vh-100, body-stats">
-        <main class="flex-grow-1">
-            <div class="text-center">
-                <img src="../assets/STATS.png" alt="imagen titulo Stats" class="img-fluid mx-auto img-titulo-stats">
-            </div>
-            <div class="container">
-                <div id="carouselExample" class="carousel slide">  
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../assets/pngegg (8).png" alt="Personajes" class="img-fluid mx-auto d-block img-stats-naruto">
-                            <ul class="pagination justify-content-center mt-3">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="0">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="1">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="2">3</a>
-                                </li>
-                            </ul> 
-                            <h2 class="text-center text-white fw-bold">POPULATION BY VILLAGES</h2>
-                            <div class="table-responsive">
-                                <table class="table table-stats table-hover">
-                                    <thead class="table-dark">
+        template: `
+                <body class="d-flex flex-column min-vh-100 body-stats">
+                    <main class="flex-grow-1">
+                        <div class="text-center">
+                            <img src="../assets/STATS.png" alt="imagen titulo Stats" class="img-fluid mx-auto img-titulo-stats">
+                        </div>
+                        <div class="container">
+                            <div class="text-center mb-4">
+                                <button class="btn btn-primary mx-2" data-bs-target="#carouselExample" data-bs-slide-to="0">
+                                Villages
+                                </button>
+                                <button class="btn btn-primary mx-2" data-bs-target="#carouselExample" data-bs-slide-to="1">
+                                Clans
+                                </button>
+                                <button class="btn btn-primary mx-2" data-bs-target="#carouselExample" data-bs-slide-to="2">
+                                Debut
+                                </button>
+                            </div>
+                            <div id="carouselExample" class="carousel slide" data-bs-interval="false">
+                                <div class="carousel-inner">
+                                <!-- Primera tabla: Población por aldeas -->
+                                <div class="carousel-item active">
+                                    <h2 class="text-center text-white fw-bold">POPULATION BY VILLAGES</h2>
+                                    <div class="table-responsive">
+                                    <table class="table table-stats table-hover">
+                                        <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Villages</th>
@@ -222,8 +222,8 @@ Vue.component('stats-component', {
                                             <th>% Undefined sex</th>
                                             <th>Undefined sex</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         <tr v-for="(village, index) in statsVillages" :key="village.id">
                                             <td>{{ index + 1 }}</td>
                                             <td>{{ village.name }}</td>
@@ -235,27 +235,15 @@ Vue.component('stats-component', {
                                             <td>{{ village.undefinedPercentage }}%</td>
                                             <td>{{ village.undefinedTotal }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/varios-narutos.png" alt="varios Narutos" class="img-fluid mx-auto d-block img-stats-naruto">
-                            <ul class="pagination justify-content-center mt-3">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="0">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="1">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="2">3</a>
-                                </li>
-                            </ul> 
-                            <h2 class="text-center text-white fw-bold">CHARACTERS PER CLAN</h2>
-                            <div class="table-responsive">
-                                <table class="table table-stats table-hover">
-                                    <thead class="table-dark">
+                                        </tbody>
+                                    </table>
+                                    </div>    
+                                </div>
+                                <div class="carousel-item">
+                                    <h2 class="text-center text-white fw-bold">CHARACTERS PER CLAN</h2>
+                                    <div class="table-responsive">
+                                    <table class="table table-stats table-hover">
+                                        <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Clans</th>
@@ -265,9 +253,8 @@ Vue.component('stats-component', {
                                             <th>% Women's</th>
                                             <th>Total women's</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-
+                                        </thead>
+                                        <tbody>
                                         <tr v-for="(clans, index) in statsClans" :key="clans.id">
                                             <td>{{ index + 1 }}</td>
                                             <td>{{ clans.name }}</td>
@@ -277,68 +264,36 @@ Vue.component('stats-component', {
                                             <td>{{ clans.femalePercentage }}%</td>
                                             <td>{{ clans.femaleTotal }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div> 
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/pngwing.com (6) (1).png" alt="varios Narutos" class="img-fluid mx-auto d-block img-stats-naruto">
-                            <ul class="pagination justify-content-center mt-3">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="0">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="1">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="2">3</a>
-                                </li>
-                            </ul> 
-                            <h2 class="text-center text-white fw-bold">NUMBER OF CHARACTERS PER DEBUT</h2>
-                            <div class="table-responsive">
-                                <table class="table table-stats table-hover">
-                                    <thead class="table-dark">
+                                        </tbody>
+                                    </table>
+                                    </div> 
+                                </div>
+                                <div class="carousel-item">
+                                    <h2 class="text-center text-white fw-bold">NUMBER OF CHARACTERS PER DEBUT</h2>
+                                    <div class="table-responsive">
+                                    <table class="table table-stats table-hover">
+                                        <thead class="table-dark">
                                         <tr>
                                             <th>Debut</th>
                                             <th>Characters in debut</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Convertir debutCount a un array de objetos -->
+                                        </thead>
+                                        <tbody>
                                         <tr v-for="(value, key) in debutCount" :key="key">
                                             <td>{{ key }}</td>
                                             <td>{{ value }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div> 
+                                        </tbody>
+                                    </table>
+                                    </div> 
+                                </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>      
-                </div>
-                <ul class="pagination justify-content-center mt-3">
-                    <li class="page-item">
-                        <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="0">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="1">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" data-bs-target="#carouselExample" data-bs-slide-to="2">3</a>
-                    </li>
-                </ul>          
-            </div>
-        </main>
-    </body>
-    `
-});
+                    </main>
+                </body>
+        `
+    });
 
 new Vue({
     el: '#app',

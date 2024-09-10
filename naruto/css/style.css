@@ -680,9 +680,54 @@ img {
     margin-right: 6px;
 }
 
-/* Opaca un poco la tabla de stats para darle estilo */
+
 .table-stats {
-    opacity: 0.8;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Cinzel', serif;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table-stats thead {
+    background-color: black; /* Fondo blanco para los encabezados */
+    color: black; /* Texto negro */
+    font-size: 1rem; /* Tamaño del texto más grande */
+    font-weight: bold;
+    text-transform: uppercase; /* Letras en mayúsculas */
+}
+
+.table-stats td {
+    padding: 15px; /* Espaciado entre celdas */
+    text-align: center;
+    border: 1px solid black; /* Bordes blancos entre celdas */
+    color: black;
+    background-color: rgba(218, 109, 6, 0.664);
+    font-size: 1.3rem;
+}
+
+  /* Hover en las filas de la tabla */
+.table-stats tbody tr:hover {
+    background-color: white; /* Cambia el color al pasar el ratón */
+    color: white;
+}
+
+  /* Bordes redondeados de la tabla */
+.table-stats {
+    border-radius: 15px;
+}
+
+.table-stats tbody tr:last-child td {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+  /* Estilo del texto */
+.table-stats th, .table-stats td {
+    font-family: 'Cinzel', serif; /* Fuente con estilo gótico */
+    letter-spacing: 1px;
 }
 
 /* Estilo para el body de la página stats con fondo transparente */
