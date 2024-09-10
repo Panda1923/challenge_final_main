@@ -605,12 +605,20 @@ img {
         transform: translateY(0);
     }
 }
-
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .footer-custom {
     background-color: #e97406;
     color: #fff;
     padding: 20px;
     text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-logo img {
@@ -1015,10 +1023,14 @@ img {
 }
 
 body {
+    flex-direction: column;
+    display: flex;
     margin: 100px auto;
     font-family: 'Lato', sans-serif;
     color: #333;
     background-color: #f4f4f4;
+    min-height: 100vh; /* Asegura que el contenido ocupe el 100% de la altura de la pantalla */
+    margin: 0;
 }
 
 img {
