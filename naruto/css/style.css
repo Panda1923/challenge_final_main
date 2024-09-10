@@ -1767,3 +1767,51 @@ img {
 .card-clan-details .card-button:hover {
     background-color: var(--secondary-color);
 }
+/* Estilo para el fondo */
+.body-home {
+    background: url('/naruto/assets/R.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilo del titulo*/
+.title-home {
+    font-size: 80px;
+    font-family: 'Impact', sans-serif;
+    color: white;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+
+/* Estilo para los links debajo de la barra de búsqueda */
+.menu-links {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-links a {
+    margin: 0 20px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: #ffcc00;
+}
+.modal-dialog {
+    max-width: 70%; /* Agrandar el modal */
+    margin: 100px auto;
+} /* Centrar el modal verticalmente */
+
+.img-transparent {
+    opacity: 0.6;
+} 
