@@ -4,10 +4,13 @@ Vue.component('header-component', {
         <header>
         <div class="nav-container">
             <div class="menu-icon" id="menuIcon">
-                <img class="logo" src="../assets/naruto-removebg-preview.png" alt="Menu Icon">
+               <img class="logo" src="../assets/menu.png" alt="Menu Icon">
             </div>
             <nav class="navbar navbar-expand-md navbar-light" id="navbar">
-                <a class="navbar-brand d-md-none" href="#home">Home</a>
+               <a class="navbar-brand d-md-none" href="./index.html">Home</a>
+<a class="navbar-brand d-md-none" href="./stats.html">stats</a>
+ <a class="navbar-brand d-md-none" href="./store.html">store</a>
+        
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -207,7 +210,7 @@ Vue.component('stats-component', {
                                 <div class="carousel-inner">
                                 <!-- Primera tabla: Población por aldeas -->
                                 <div class="carousel-item active">
-                                    <h2 class="text-center text-white fw-bold">POPULATION BY VILLAGES</h2>
+                                 <h2 class="text-center text-white fw-bold"><img src="../assets/population.png" alt=""></h2>
                                     <div class="table-responsive">
                                     <table class="table table-stats table-hover">
                                         <thead class="table-dark">
@@ -240,7 +243,7 @@ Vue.component('stats-component', {
                                     </div>    
                                 </div>
                                 <div class="carousel-item">
-                                    <h2 class="text-center text-white fw-bold">CHARACTERS PER CLAN</h2>
+                                   <h2 class="text-center text-white fw-bold"><img src="../assets/charactersperclan.png" alt=""></h2>
                                     <div class="table-responsive">
                                     <table class="table table-stats table-hover">
                                         <thead class="table-dark">
@@ -269,7 +272,7 @@ Vue.component('stats-component', {
                                     </div> 
                                 </div>
                                 <div class="carousel-item">
-                                    <h2 class="text-center text-white fw-bold">NUMBER OF CHARACTERS PER DEBUT</h2>
+                                    <img src="../assets/number.png" alt="">
                                     <div class="table-responsive">
                                     <table class="table table-stats table-hover">
                                         <thead class="table-dark">
