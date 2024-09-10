@@ -241,7 +241,6 @@ Vue.component('clans-section', {
   },
   template: `
   <section class="character-section">
-<<<<<<<<< Temporary merge branch 1
   <h2 class="text-center mb-4">
    <img src="../assets/clans.png" alt="">
   </h2>
