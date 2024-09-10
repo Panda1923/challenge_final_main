@@ -12,7 +12,7 @@ Vue.component('character-details', {
         loadCharacterDetails() {
             const urlParams = new URLSearchParams(window.location.search);
             const characterId = urlParams.get('id');
-
+            
             if (characterId) {
                 fetch(`https://dattebayo-api.onrender.com/characters/${characterId}`)
                     .then(response => {
@@ -36,53 +36,55 @@ Vue.component('character-details', {
                 this.errorMessage = 'ID de personaje no proporcionado en la URL.';
             }
         },
-
-        formatNatureType(natureType) {
-            if (!natureType || !natureType.length) return 'No disponible';
-            return natureType.join(', ');
+        formatArray(arr) {
+            return arr && arr.length ? arr : ['No disponible'];
         },
-
         formatRank(rank) {
-            if (!rank || !rank.ninjaRank) return 'No disponible';
-            const { ninjaRank, ninjaRegistration } = rank;
-            let rankText = 'Ninja Rank: ';
-            for (const part in ninjaRank) {
-                rankText += `${part}: ${ninjaRank[part]}, `;
-            }
-            rankText += `Registro Ninja: ${ninjaRegistration || 'No disponible'}`;
-            return rankText;
+            if (!rank || !rank.ninjaRank) return ['No disponible'];
+            return Object.entries(rank.ninjaRank).map(([key, value]) => `${key}: ${value}`);
         },
-
         formatDebut(debut) {
-            if (!debut) return 'No disponible';
-            return `
-                Manga: ${debut.manga || 'No disponible'}
-                Anime: ${debut.anime || 'No disponible'}
-                Novel: ${debut.novel || 'No disponible'}
-                Movie: ${debut.movie || 'No disponible'}
-                Game: ${debut.game || 'No disponible'}
-                Ova: ${debut.ova || 'No disponible'}
-            `;
-        },
-
-        formatJutsu(jutsu) {
-            if (!jutsu || !jutsu.length) return 'No disponible';
-            return jutsu.join(', ');
+            if (!debut) return ['No disponible'];
+            return Object.entries(debut)
+                .filter(([_, value]) => value)
+                .map(([key, value]) => `${key}: ${value}`);
         }
     },
     template: `
-        <div v-if="character">
-            <div>
-                <h1 class="h1-details">{{ character.name }}</h1>
-                <img class="img-details" :src="character.images[0]" alt="Imagen del personaje">
-                <p class="p-details"><strong class="strong-details">Nature Type:</strong> {{ formatNatureType(character.natureType) }}</p>
-                <p class="p-details"><strong class="strong-details">Rango:</strong> {{ formatRank(character.rank) }}</p>
-                <p class="p-details"><strong class="strong-details">Debut:</strong> {{ formatDebut(character.debut) }}</p>
-                <p class="p-details"><strong class="strong-details">Jutsu:</strong> {{ formatJutsu(character.jutsu) }}</p>
-                <a class="button-details" href="./index.html" id="backToCharacters">Regresar a Personajes</a>
+        <div v-if="character" class="character-card-details">
+            <div class="card-header-details">
+                <h1 class="character-name-details">{{ character.name }}</h1>
             </div>
-            <p v-if="errorMessage">{{ errorMessage }}</p>
+            <img class="character-image-details" :src="character.images[0]" :alt="character.name">
+            <div class="card-content-details">
+                <div class="info-section-details">
+                    <h2 class="info-title-details">Nature Type</h2>
+                    <ul class="info-list-details">
+                        <li v-for="nature in formatArray(character.natureType)" class="info-item-details">{{ nature }}</li>
+                    </ul>
+                </div>
+                <div class="info-section-details">
+                    <h2 class="info-title-details">Rango</h2>
+                    <ul class="info-list-details">
+                        <li v-for="rank in formatRank(character.rank)" class="info-item-details">{{ rank }}</li>
+                    </ul>
+                </div>
+                <div class="info-section-details">
+                    <h2 class="info-title-details">Debut</h2>
+                    <ul class="info-list-details">
+                        <li v-for="debut in formatDebut(character.debut)" class="info-item-details">{{ debut }}</li>
+                    </ul>
+                </div>
+                <div class="info-section-details">
+                    <h2 class="info-title-details">Jutsu</h2>
+                    <ul class="info-list-details">
+                        <li v-for="jutsu in formatArray(character.jutsu)" class="info-item-details">{{ jutsu }}</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="./index.html" class="back-button-details">Return to Characters</a>
         </div>
+        <p v-if="errorMessage">{{ errorMessage }}</p>
     `
 });
 
