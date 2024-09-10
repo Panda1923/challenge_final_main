@@ -1,4 +1,3 @@
-
 Vue.component('character-details', {
     data() {
         return {
@@ -44,18 +43,18 @@ Vue.component('character-details', {
         }
     },
     template: `
-        <div>
-            <h1 class="h1-details">{{ clan.name }}</h1>
-            <img class="img-details" src="../assets/clan-naruto_3htx.jpg" alt="Imagen generica clan">
-            <p class="p-details"><strong class="strong-details">Characters per clan:</strong> {{ clan.characters ? clan.characters.length : 0 }}</p>
-            <p class="p-details"><strong class="strong-details">Name of the characters:</strong> {{ characterNames }}</p>
-            <p class="p-details" v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
-             <a class="button-details" href="./index.html" id="backToCharacters">Regresar a Personajes</a>
-           
-
+        <div class="card-clan-details">
+            <h1 class="card-title">{{ clan.name }}</h1>
+            <img class="card-image" src="../assets/clan-naruto_3htx.jpg" alt="Imagen genérica clan">
+            <p class="card-text"><strong class="strong-details">Characters per clan:</strong> {{ clan.characters ? clan.characters.length : 0 }}</p>
+            <p class="card-text"><strong class="strong-details">Name of the characters:</strong> {{ characterNames }}</p>
+            <p class="card-text" v-if="errorMessage">{{ errorMessage }}</p>
+            <a class="card-button" href="./index.html" id="backToCharacters">Return to Characters</a>
         </div>
     `
 });
+
+
 Vue.component('footer-component', {
     template: `
         <div class="footer-content footer-custom">

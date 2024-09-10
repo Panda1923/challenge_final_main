@@ -736,127 +736,986 @@ img {
 
 
 
-/* Contenedor de la tarjeta */
-#app-details {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 20px; /* Asegura que haya suficiente espacio alrededor del contenido */
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    
-    max-width: 80%; /* Limita el ancho máximo */
-    display: flex; /* Utiliza flexbox para el diseño */
-    flex-direction: column; /* Cambia a columna para que los elementos se apilen verticalmente */
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    text-align: center; /* Centra el texto dentro del contenedor de texto */
-    margin: auto; /* Centra el contenedor en el contenedor principal */
+#bodyhtml {
+    font-family: fantasy;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0; 
 }
 
-/* Imagen de detalles */
-.img-details {
-    width: 100%;  /* Asegura que la imagen se ajuste al ancho del contenedor */
-    max-width: 500px; /* Ajusta el ancho máximo de la imagen */
-    border-radius: 8px;
-    margin-bottom: 20px; /* Espacio debajo de la imagen */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
-    animation: pulse 2s infinite;
-}
-
-/* Contenedor de información */
-.details-info {
-    max-width: 100%; /* Asegura que el contenido no se desborde */
-    padding: 0 20px; /* Añade espaciado horizontal */
-}
-
-/* Títulos */
-.h1-details {
-    font-size: 30px;
-    color: #ff3f34; /* Color inspirado en Naruto */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Párrafos con detalles */
-.p-details {
-    padding: 15px;
-    font-size: 30px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.p-details:hover {
-    color: #f5c300;
-    text-shadow: 0 0 10px #f5c300;
-}
-
-/* Mensaje de error */
-#errorMessageee {
-    color: #f44336;
-    font-size: 1.2em;
-}
-
-/* Botón de detalles */
-.button-details,
-#backToCharacters {
-    text-decoration: none;
-    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: white;
+.icon-cart {
+    width: 40px;
+    height: 40px;
+    stroke: #000;
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    font-size: 25px;
-   /* Añade espacio encima del botón */
 }
 
-.button-details:hover,
-#backToCharacters:hover {
+video {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.nav-container {
+    position: relative;
+    z-index: 1002; 
+}
+
+.menu-icon {
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    z-index: 1002;
+    transition: left 0.3s ease-in-out;
+}
+
+.menu-icon img {
+   min-width: 100%;
+    height: 80px;
+    cursor: pointer;
+}
+
+h5 { 
+    color: #f57f17;
+}
+
+nav {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #e97406;
+    position: fixed;
+    width: 0;
+    top: 0;
+    left: 0;
+    height: 10vh;
+    overflow: hidden;
+    transition: width 0.6s ease-in-out;
+    z-index: 1001;
+}
+
+nav.open {
+    width: 100%;
+}
+
+nav a  {
+    margin: 0 15px;
+    display: flex;
+    color: #f9a825;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.nav-container:hover nav {
+    width: 100%;
+}
+
+.nav-container:hover .menu-icon {
+    left: calc(100% - 60px); 
+    opacity: 0;
+}
+
+.container {
+    padding: 60px 20px;
+    z-index: 1; 
+    position: relative;
+}
+
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 20px; /* Añade espacio alrededor */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+}
+
+.character-item {
+    overflow: hidden;
+    width: calc(33% - 20px); /* Ajusta el tamaño de las tarjetas */
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto; /* Centra las tarjetas */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.character-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.character-item img {
+    max-width: 60%;
+    height: 800px;
+    border-bottom: 2px solid #f57f17;
+}
+
+.character-item h2 {
+    font-size: 40px;
+    margin: 10px 0;
+    color: #f57f17;
+}
+
+.character-item p {
+    font-size: 30px;
+    color: #000000;
+}
+
+h2 {
+    color: #f57f17;
+    font-size: 40px;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f57f17;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.carousel img {
+    height: 50vh;
+    width: 100%; 
+    object-fit: contain; 
+}
+
+.input1-group {
+    width: 30%;
+}
+
+.form-check {
+    margin: 0 10px;
+}
+
+.input-group {
+    max-width: 600px;
+}
+
+.character-section {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Estilo para la cuadrícula de tarjetas */
+.flip-card {
+    background-color: transparent;
+    width: 400px;
    
-    background: linear-gradient(135deg, #f5c300, #ff3f34);
-    transform: scale(1.1);
-    font-size: 22px; /* Ajusta el tamaño del texto en el hover */
+    height: 600px; 
+    perspective: 1000px;
 }
 
-/* Botón de volver */
-#backToCharacters {
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    
+    background-color: #bbb;
+}
+.flip-card-back {
+  
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* Ajusta el padding según sea necesario */
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
+    overflow: auto; /* Añade barras de desplazamiento si el contenido es más grande */
+}
+
+
+.card-body {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+}
+
+.d-flex {
+    margin-top: auto; /* Asegura que los botones se mantengan en la parte inferior */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+
+    padding: 5px;
+    font-size: 40px;
+    color: #030202;
+}
+
+.card-text {
+    font-size: 25px;
+    color:  #f57f17;
+}
+
+/* General Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 100px auto;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Icono del Carrito */
+.icon-cart-custom {
+    width: 100px; /* Ajusta el tamaño del icono */
+    height: 100px;
+    stroke: #fff; /* Cambia el color del icono a blanco para contraste */
+    cursor: pointer;
+}
+
+
+/* Estilos del Header */
+.header-custom {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 40px 0;
+    background-image: url();
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/* Contenedor del Icono del Carrito */
+.container-icon-custom {
+    position: sticky; /* Hace que el contenedor sea pegajoso */
+    top: 100px; /* Ajusta la distancia desde la parte superior */
+    left: 100%;
+    width: 150px; /* Tamaño del contenedor */
+    height: 150px; /* Tamaño del contenedor */
+    background-color: #f57f17; /* Fondo negro */
+    border-radius: 50%; /* Hace que el fondo sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para mejor visibilidad */
+}
+
+.count-products-custom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+/* Fondo Oscuro del Modal */
+.overlay-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    display: none;
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+/* Modal del Carrito */
+/* Modal del Carrito */
+.modal-cart-custom {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 40vw; /* Aumenta el ancho del modal al 70% del ancho de la pantalla */
+    height: 40vw; /* Aumenta la altura del modal */
+    max-width: 10000px; /* Aumenta el tamaño máximo del modal */
+    max-height: 10000px; /* Aumenta la altura máxima del modal */
+    transition: opacity 0.3s ease;
+    z-index: 1001;
+    overflow-y: auto;
+}
+
+
+
+/* Botón de Cerrar Modal */
+.close-modal-custom {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: #e97406;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal-custom:hover {
+    color: red;
+}
+
+/* Mostrar Modal y Overlay */
+.overlay-custom.show,
+.modal-cart-custom.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-cart-custom.visible {
+    transform: translateX(0);
+}
+
+.overlay-custom.visible,
+.modal-cart-custom.visible {
+    display: block;
+}
+
+.close-modal-custom {
+    cursor: pointer;
+}
+
+.card-body {
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+
+/* Contenedor de Productos en el Carrito */
+.cart-row-product-custom {
+    max-height: 800px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Tarjetas de Productos en el Carrito */
+.cart-item-custom {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ajustes para el contenedor de la imagen */
+.cart-item-figure-custom {
+    width: 190px; /* O el ancho que prefieras */
+    margin: 0;
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.cart-item-figure-custom img {
+    max-width: 100%; /* Asegúrate de que la imagen no exceda el contenedor */
+    height: auto; /* Mantén la proporción de la imagen */
+}
+
+/* Ajustes para la información del producto en el carrito */
+.cart-info-product-custom {
+    flex-grow: 1;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacia el contenido de manera uniforme */
+}
+
+.cart-quantity-container-custom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.price-custom{
+    font-size: 30px;
+   color: #e97406;;
+}
+
+.cart-quantity-container-custom button {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    font-size: 25px; /* Aumenta el tamaño del texto de los botones */
+    background-color: #fff;
+    border: 2px solid #ddd; /* Aumenta el grosor del borde */
+    border-radius: 8px; /* Ajusta el redondeado de los bordes */
+    cursor: pointer;
+}
+
+.cart-btn-remove-custom {
+    background-color: #e97406;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-btn-remove-custom:hover {
+    background-color: #e97406;
+}
+
+.cart-total-price-custom {
+    font-weight: bold;
+    margin-left: auto;
+    font-size: 30px;
+    color: #000;
+}
+
+.cart-actions-custom {
+    text-align: center;
     margin-top: 20px;
 }
 
-/* Animación de pulso */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+.btn-buy-custom {
+    background-color:  #e97406;
+    color: #fff;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+/* Contenedor de Ítems de la Tienda */
+.container-items-custom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Añade espacio alrededor del contenedor */
+    margin: 0 20px; /* Añade margen de 20px en los lados izquierdo y derecho */
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
+}
+
+.item-custom {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: transparent; /* Fondo blanco sólido para las tarjetas */
+    transition: transform 0.5s, box-shadow 0.5s;
+    margin: 0; /* Elimina márgenes dentro de cada tarjeta */
+}
+
+.item-custom:hover {
+    transform: scale(1.02);
+}
+
+.item-custom img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    transition: transform 0.5s;
+}
+
+.item-custom:hover img {
+    transform: scale(1.2);
+}
+
+.info-product-custom {
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+.info-product-custom button {
+    font-size: 30px;
+    border: none;
+    background-color: #e97406;
+    color: #050404;
+    padding: 15px 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Mensajes y Elementos Ocultos */
+.hidden-cart-custom {
+    display: none;
+}
+
+/* Mensaje de carrito vacío */
+.cart-empty-message-custom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: #e97406;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Ajustar tamaño del precio */
+.cart-price-custom{
+    color: #f57f17;
+    font-size: 30px; /* Aumenta el tamaño de la fuente */
+    font-weight: 900;
+}
+
+.form-container-custom {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-container {
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.form-visible-custom {
+    background-color:transparent;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.confirmation-message {
+    max-width: 500px;
+    margin: 0 auto; /* Asegura que esté centrado */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Estilos personalizados para la barra de desplazamiento */
-body::-webkit-scrollbar {
-    width: 12px;
+.footer-custom {
+    background-color: #e97406;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
 }
 
-body::-webkit-scrollbar-track {
-    background: #222; /* Color del fondo de la barra de desplazamiento */
+.footer-logo img {
+    max-width: 150px;
+    margin-bottom: 10px;
 }
 
-body::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff3f34, #f5c300); /* Colores inspirados en Naruto */
+.footer-description {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-social {
+    margin-top: 25px;
+}
+
+.footer-social-link {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.footer-social-link img {
+    width: 200px;
+    height: 100px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.footer-social-link1 img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* Opaca un poco la tabla de stats para darle estilo */
+.table-stats {
+    opacity: 0.8;
+}
+
+/* Estilo para el body de la página stats con fondo transparente */
+.body-stats {
+    background-color: transparent !important;
+}
+
+/* Estilo para que el titulo "imagen" tenga un tamaño fijo */
+.img-titulo-stats {
+    max-height: 800px;
+    max-width: auto;
+}
+
+/* Estilo para que la imagen del titulo tenga un tamaño */
+.img-stats-naruto {
+    max-height: 350px;
+    max-width: auto;
+}
+
+
+.btn:hover {
+    color: black;
+    background-color:  #e97406;
+    border-color: black;
+}
+.btn{
+    height: 50px;
+    width: 100px;
+    background-color:  #e97406;
+    border-color: black;
+    font-size: 20px;
+}
+
+
+/* Contenedor de Tarjetas */
+.tarjetas {
+    display: flex;
+    gap: 7%; /* Espacio entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en una nueva línea si es necesario */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+}
+
+
+.card-container {
+    width: 400px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que el contenido no se desborde fuera de los bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra para mejorar la apariencia */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+
+
+:root {
+    --primary-color: #FF4500;
+    --secondary-color: #FFA500;
+    --background-color: #1E1E1E;
+    --text-color: #FFFFFF;
+    --card-background: #2A2A2A;
+}
+
+.body-details {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 115px;
+    box-sizing: border-box;
+}
+
+.character-card-details {
+    background-color: var(--card-background);
+    width: 80vw;
+    max-width: 1500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.character-card-details:hover {
+    transform: scale(1.02);
+}
+
+.card-header-details {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card-header-details::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: shine-details 20s linear infinite;
+}
+
+@keyframes shine-details {
+    0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
+}
+
+.character-name-details {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-body-details {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 500px;
+}
+
+.character-image-details {
+    width: 50%;
+    max-width: 400px;
+    height: 100%;
+    object-fit: cover;
+    padding: 20px;
+    border-right: 4px solid var(--primary-color);
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+}
+
+.card-content-details {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-section-details {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 69, 0, 0.1);
     border-radius: 10px;
 }
 
-body::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #f5c300, #ff3f34);
+.info-title-details {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
 }
 
+.info-list-details {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-.boton{
-    padding: 30px;
+.info-item-details {
+    background-color: rgba(255, 69, 0, 0.2);
+    border-radius: 15px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.info-item-details:hover {
+    background-color: rgba(255, 69, 0, 0.4);
+}
+
+.back-button-container-details {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.back-button-details {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.back-button-details:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 850px) {
+    .character-card-details {
+        width: 95%;
+        flex-direction: column;
+    }
+    .character-image-details {
+        width: 100%;
+        height: 300px;
+        border-right: none;
+        border-bottom: 4px solid var(--primary-color);
+        position: static;
+    }
+    .card-content-details {
+        padding: 10px;
+    }
+    .info-section-details {
+        width: 100%;
+    }
+}
+/* Estilos de la tarjeta de detalles del clan */
+.card-clan-details {
+    background-color: var(--card-background);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card-clan-details:hover {
+    transform: scale(1.02);
+}
+
+.card-clan-details .card-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-clan-details .card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    border: 3px solid var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.card-clan-details .card-text {
+    font-size: 25px;
+    background-color: rgba(255, 69, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.card-clan-details .card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.card-clan-details .card-button:hover {
+    background-color: var(--secondary-color);
 }
